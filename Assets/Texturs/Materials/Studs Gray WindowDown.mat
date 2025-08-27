@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Studs Yellow
+  m_Name: Studs Gray WindowDown
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -42,12 +42,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 0.7, y: 14}
-        m_Offset: {x: 0.03, y: 0}
+        m_Scale: {x: 15.5, y: 1.05}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: bba9a6c94690a2c4280f4247488942af, type: 3}
-        m_Scale: {x: 0.7, y: 14}
-        m_Offset: {x: 0.03, y: 0}
+        m_Scale: {x: 15.5, y: 1.05}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -79,6 +79,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.99312633, g: 1, b: 0.28773582, a: 1}
+    - _Color: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
