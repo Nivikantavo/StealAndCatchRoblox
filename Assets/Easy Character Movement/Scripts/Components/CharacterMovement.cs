@@ -1661,7 +1661,7 @@ namespace ECM.Components
 
             // Attempt to validate frictionless material
 
-            var aCollider = GetComponent<Collider>();
+            /*var aCollider = GetComponent<Collider>();
             if (aCollider == null)
                 return;
 
@@ -1684,7 +1684,7 @@ namespace ECM.Components
                 string.Format(
                     "CharacterMovement: No 'PhysicMaterial' found for '{0}'s Collider, a frictionless one has been created and assigned.\n" +
                     "Please add a Frictionless 'PhysicMaterial' to '{0}' game object.",
-                    name));
+                    name));*/
         }
 
         public void OnEnable()

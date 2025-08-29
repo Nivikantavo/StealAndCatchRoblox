@@ -50,10 +50,10 @@ namespace ECM.Components
         private static readonly Collider[] OverlappedColliders = new Collider[16];
 
         protected const float kBackstepDistance = 0.05f;
-        protected const float kMinCastDistance = 0.01f;
+        protected const float kMinCastDistance = 0.5f;
         protected const float kMinLedgeDistance = 0.05f;
         protected const float kMinStepOffset = 0.10f;
-        protected const float kMaxStepOffset = 2f;
+        protected const float kMaxStepOffset = 100f;
         protected const float kHorizontalOffset = 0.001f;
 
         private CapsuleCollider _capsuleCollider;
