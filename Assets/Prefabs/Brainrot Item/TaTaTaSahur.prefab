@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3232602100017934087}
-  - component: {fileID: 2337000078807245503}
   m_Layer: 0
   m_Name: TaTaTaSahur
   m_TagString: Untagged
@@ -33,18 +32,6 @@ Transform:
   - {fileID: 522161806926002322}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2337000078807245503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070665588867258421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1d5e4fd8fae02c48aa83d0e38e73ede, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6978372622320438195
 GameObject:
   m_ObjectHideFlags: 0

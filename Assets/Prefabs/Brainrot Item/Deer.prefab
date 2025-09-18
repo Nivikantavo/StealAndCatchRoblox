@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5767616779296269888}
-  - component: {fileID: 947530906102809113}
   m_Layer: 0
   m_Name: Deer
   m_TagString: Untagged
@@ -33,18 +32,6 @@ Transform:
   - {fileID: 3887750891450059598}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &947530906102809113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5067059550404537473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1d5e4fd8fae02c48aa83d0e38e73ede, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6516150721752859558
 GameObject:
   m_ObjectHideFlags: 0

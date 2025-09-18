@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4876303047853242739}
   - component: {fileID: 858442407882977267}
   - component: {fileID: 9128732495398670993}
-  - component: {fileID: 2410054386936642668}
   m_Layer: 0
   m_Name: Mateo
   m_TagString: Untagged
@@ -84,15 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2410054386936642668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3620397995487959871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1d5e4fd8fae02c48aa83d0e38e73ede, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
