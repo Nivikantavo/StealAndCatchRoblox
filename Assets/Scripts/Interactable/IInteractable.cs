@@ -1,8 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public interface IInteractable
 {
-    public void Interact(Transform transform);
+    public InteractAction InteractAction { get; }
+    public Transform SelfTransform { get; }
+    void Interact(IInteractor interactor);
+}
+
+public interface IInteractor
+{
+    public Transform SelfTransform { get; }
+    public Transform HouseTransform { get; }
 }

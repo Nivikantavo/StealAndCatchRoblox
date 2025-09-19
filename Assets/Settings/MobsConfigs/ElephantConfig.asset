@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61466c07cdb96f24b9dea6dd5961f87f, type: 3}
   m_Name: ElephantConfig
   m_EditorClassIdentifier: 
-  <BaseCost>k__BackingField: 0
-  <ValuePerSecond>k__BackingField: 0
+  <Name>k__BackingField: 
+  <BaseCost>k__BackingField: 100
+  <ValuePerSecond>k__BackingField: 10
   <MobPrefab>k__BackingField: {fileID: 6062579842634733250, guid: f96c44769fd15f843adc26a5d9748370,
     type: 3}

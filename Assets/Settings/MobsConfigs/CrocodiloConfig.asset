@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61466c07cdb96f24b9dea6dd5961f87f, type: 3}
   m_Name: CrocodiloConfig
   m_EditorClassIdentifier: 
-  <BaseCost>k__BackingField: 0
-  <ValuePerSecond>k__BackingField: 0
+  <Name>k__BackingField: 
+  <BaseCost>k__BackingField: 100
+  <ValuePerSecond>k__BackingField: 10
   <MobPrefab>k__BackingField: {fileID: 372978344994494075, guid: e99ac917dd717d243afcd2bd0593f94f,
     type: 3}

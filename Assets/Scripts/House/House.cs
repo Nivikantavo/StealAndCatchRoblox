@@ -6,6 +6,7 @@ using UnityEngine;
 public class House : MonoBehaviour
 {
     public bool IsClosed => _lock.gameObject.activeSelf;
+    public bool  HasFreeHolder => _mobHolders.Exists(holder => holder.IsFree);
 
     [SerializeField] private List<MobHolder> _mobHolders;
     [SerializeField] private HouseLockerButton _lockButton;

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61466c07cdb96f24b9dea6dd5961f87f, type: 3}
   m_Name: KiwiRacoon
   m_EditorClassIdentifier: 
-  <BaseCost>k__BackingField: 0
-  <ValuePerSecond>k__BackingField: 0
+  <Name>k__BackingField: 
+  <BaseCost>k__BackingField: 100
+  <ValuePerSecond>k__BackingField: 10
   <MobPrefab>k__BackingField: {fileID: 7753246378633594065, guid: 9e617f4bd4f6f428f8e39b28f5c4929b,
     type: 3}

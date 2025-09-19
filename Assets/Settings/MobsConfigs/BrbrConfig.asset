@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61466c07cdb96f24b9dea6dd5961f87f, type: 3}
   m_Name: BrbrConfig
   m_EditorClassIdentifier: 
-  <BaseCost>k__BackingField: 0
-  <ValuePerSecond>k__BackingField: 0
+  <Name>k__BackingField: 
+  <BaseCost>k__BackingField: 100
+  <ValuePerSecond>k__BackingField: 10
   <MobPrefab>k__BackingField: {fileID: 3646049497718657852, guid: 81503784b9d7a411da0052862fb93ed7,
     type: 3}

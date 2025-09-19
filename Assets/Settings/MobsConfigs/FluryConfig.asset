@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61466c07cdb96f24b9dea6dd5961f87f, type: 3}
   m_Name: FluryConfig
   m_EditorClassIdentifier: 
-  <BaseCost>k__BackingField: 0
-  <ValuePerSecond>k__BackingField: 0
+  <Name>k__BackingField: 
+  <BaseCost>k__BackingField: 100
+  <ValuePerSecond>k__BackingField: 10
   <MobPrefab>k__BackingField: {fileID: 268567811211770222, guid: b58be5e7a00251c469d12530eb8866cd,
     type: 3}
