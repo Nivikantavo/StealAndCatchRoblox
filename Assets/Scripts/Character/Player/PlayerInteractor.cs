@@ -1,16 +1,25 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 public class PlayerInteractor : MonoBehaviour, IInteractor
 {
     public Transform SelfTransform { get; private set; }
     public Transform HouseTransform { get; private set; }
+    public IWallet Wallet => _player.Wallet;
+    public MobHolder MobHolder => _player.GetFreeMobHolder();
 
     [SerializeField] private float _interactionRange = 3f;
-    [SerializeField] private InteractableView _interactableView;
+    private InteractableView _interactableView;
 
     private IInteractable _currentInteractable;
     private Player _player;
+
+    [Inject]
+    private void Construt(InteractableView interactableView)
+    {
+        _interactableView = interactableView;
+    }
 
     public void Initialize(Player player, Transform houseTransform)
     {
@@ -71,12 +80,6 @@ public class PlayerInteractor : MonoBehaviour, IInteractor
 
     private void OnTryInteract()
     {
-        switch (_currentInteractable.InteractAction.ActionType)
-        {
-            case InteractActionType.Buy:
-                var sellAction = (PurchasableMob)_currentInteractable.InteractAction;
-                sellAction.ExecuteAction(this);
-                break;
-        }
+        _currentInteractable.InteractAction.TryExecuteAction(this);
     }
 }

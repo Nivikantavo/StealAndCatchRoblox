@@ -11,4 +11,6 @@ public interface IInteractor
 {
     public Transform SelfTransform { get; }
     public Transform HouseTransform { get; }
+    public IWallet Wallet { get; }
+    public MobHolder MobHolder { get; }
 }

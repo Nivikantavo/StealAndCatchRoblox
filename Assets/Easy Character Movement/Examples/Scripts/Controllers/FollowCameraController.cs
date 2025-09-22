@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Zenject;
 
 namespace ECM.Examples
 {
@@ -63,6 +64,12 @@ namespace ECM.Examples
         public void LateUpdate()
         {
             transform.position = Vector3.Lerp(transform.position, cameraRelativePosition, followSpeed * Time.deltaTime);
+        }
+
+        [Inject]
+        private void Construct(Player player)
+        {
+            _targetTransform = player.transform;
         }
 
         #endregion

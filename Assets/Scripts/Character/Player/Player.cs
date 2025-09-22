@@ -9,17 +9,16 @@ public class Player : MonoBehaviour
     public IWallet Wallet => _wallet;
 
     [SerializeField] private PlayerInteractor _playerInteractor;
-    [SerializeField] private House _house;
 
+    private House _house;
     private Wallet _wallet;
 
-    private void Awake()
+    public MobHolder GetFreeMobHolder()
     {
-        Construct(_house);
+        return _house.GetFreeHolder();
     }
 
-    [Inject]
-    private void Construct(House house)
+    public void Initialize(House house)
     {
         _house = house;
         _playerInteractor.Initialize(this, _house.transform);

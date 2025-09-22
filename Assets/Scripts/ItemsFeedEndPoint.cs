@@ -6,10 +6,10 @@ public class ItemsFeedEndPoint : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<BrainrotMob>(out BrainrotMob brainrot))
+        if(other.TryGetComponent<BrainrotMob>(out BrainrotMob mob))
         {
-            brainrot.Stop();
-            brainrot.gameObject.SetActive(false);
+            mob.Stop();
+            mob.gameObject.SetActive(false);
         }
     }
 }

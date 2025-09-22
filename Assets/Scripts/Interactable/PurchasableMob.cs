@@ -4,17 +4,40 @@ using UnityEngine;
 public class PurchasableMob : InteractAction
 {
     private BrainrotMob _mob;
-    public PurchasableMob(BrainrotMob mob, InteractActionType actionType) : base(actionType)
+    public PurchasableMob(BrainrotMob mob)
     {
         _mob = mob;
     }
 
-    public override void ExecuteAction(IInteractor interactor)
+    public override bool TryExecuteAction(IInteractor interactor)
     {
-        Sell(interactor.HouseTransform);
+        MobHolder holder = interactor.MobHolder;
+        if (holder == null)
+        {
+            Debug.Log("No free holders in the house.");
+            return false;
+        }
+        else if (interactor.Wallet.TrySpendMoney(_mob.Config.BaseCost) == false)
+        {
+            Debug.Log("Not enough money to buy the mob.");
+            return false;
+        }
+        else
+        {
+            Debug.Log("Mob bought successfully.");
+            ExecuteAction(interactor);
+            holder.SetMob(_mob);
+            return true;
+        }
     }
 
-    public void Sell(Transform targetHouse)
+    protected override void ExecuteAction(IInteractor interactor)
+    {
+        PurchaseMob(interactor.HouseTransform);
+        base.ExecuteAction(interactor);
+    }
+
+    private void PurchaseMob(Transform targetHouse)
     {
         _mob.GoTo(targetHouse.position);
     }
