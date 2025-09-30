@@ -1,16 +1,19 @@
 using Cysharp.Threading.Tasks;
+using System;
 using UnityEngine;
 
 public class MobHolder : MonoBehaviour
 {
+    public event Action<int> MoneyCountChanged;
+    public int Earned => _earned;
     public bool IsFree => _mob == null;
-    public BrainrotMob Mob => _mob;
+    public int MaxValue => _mob.Config.MaxEarning;
 
     [SerializeField] private Transform _holdingPosition;
 
-    private BrainrotMob _mob;
     private Player _owner;
     private int _earned;
+    private BrainrotMob _mob;
 
     public void Initialize(Player player)
     {
@@ -38,30 +41,16 @@ public class MobHolder : MonoBehaviour
         _mob = null;
     }
 
-    public void SetMobOnPosition()
+    public void AddMoney(int amount)
     {
-        _mob.Stop();
-        _mob.transform.position = _holdingPosition.position;
-        _mob.transform.rotation = _holdingPosition.rotation;
-
-        StartEarning();
+        if (amount < 0) return;
+        _earned += amount;
+        MoneyCountChanged?.Invoke(_earned);
     }
 
-    private async void StartEarning()
+    public bool ItsMyMob(BrainrotMob mob)
     {
-        await MobEarning();
-    }
-
-    private async UniTask MobEarning()
-    {
-        while (_mob != null)
-        {
-            if(_earned < _mob.Config.BaseCost / 2)
-            {
-                _earned += _mob.Config.ValuePerSecond;
-            }
-            await UniTask.WaitForSeconds(1);
-        }
+        return _mob == mob;
     }
 
     private void AddEarningsToPlayer()
@@ -69,5 +58,12 @@ public class MobHolder : MonoBehaviour
         Debug.Log($"Add {_earned} to player");
         _owner.Wallet.AddMoney(_earned);
         _earned = 0;
+    }
+
+    internal void SetMobOnPosition()
+    {
+        _mob.Stop();
+        _mob.transform.position = _holdingPosition.position;
+        _mob.transform.rotation = _holdingPosition.rotation;
     }
 }

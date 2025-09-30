@@ -1,29 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WorkingMob : InteractAction
 {
-    private Player _owner;
-    private BrainrotMob _mob;
-    private MobHolder _mobHolder;
+    public event Action<BrainrotMob> OnMobSold;
 
-    public WorkingMob(Player owner, BrainrotMob mob, MobHolder holder)
+    private IInteractor _owner;
+    private BrainrotMob _mob;
+
+    public WorkingMob(IInteractor owner, BrainrotMob mob)
     {
         _owner = owner;
         _mob = mob;
-        _mobHolder = holder;
     }
 
     public override bool TryExecuteAction(IInteractor interactor)
     {
-        if(interactor.Wallet == _owner.Wallet)
+        if(interactor.SelfTransform == _owner.SelfTransform)
         {
             SellMob();
         }
         else
         {
-            StealMob();
+            StealMob(interactor);
         }
         return true;
     }
@@ -31,11 +32,11 @@ public class WorkingMob : InteractAction
     private void SellMob()
     {
         _owner.Wallet.AddMoney(_mob.Config.BaseCost);
-        _mobHolder.ClearMob();
+        OnMobSold?.Invoke(_mob);
         _mob.gameObject.SetActive(false);
     }
 
-    private void StealMob()
+    private void StealMob(IInteractor interactor)
     {
 
     }

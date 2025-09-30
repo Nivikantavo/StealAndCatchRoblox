@@ -7,9 +7,11 @@ public class PlayerInteractor : MonoBehaviour, IInteractor
     public Transform SelfTransform { get; private set; }
     public Transform HouseTransform { get; private set; }
     public IWallet Wallet => _player.Wallet;
-    public MobHolder MobHolder => _player.GetFreeMobHolder();
+    public MobHolder HouseMobHolder => _player.GetFreeMobHolder();
+    public Transform CarryPosition => _carryMobHolder;
 
     [SerializeField] private float _interactionRange = 3f;
+    [SerializeField] private Transform _carryMobHolder;
     private InteractableView _interactableView;
 
     private IInteractable _currentInteractable;
@@ -80,6 +82,6 @@ public class PlayerInteractor : MonoBehaviour, IInteractor
 
     private void OnTryInteract()
     {
-        _currentInteractable.InteractAction.TryExecuteAction(this);
+        _currentInteractable.Interact(this);
     }
 }

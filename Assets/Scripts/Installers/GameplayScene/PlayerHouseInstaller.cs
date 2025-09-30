@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class PlayerHousInstaller : MonoInstaller
+public class PlayerHouseInstaller : MonoInstaller
 {
     [SerializeField] private House _playerHouse;
 

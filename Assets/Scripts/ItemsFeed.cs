@@ -57,7 +57,7 @@ public class ItemsFeed : MonoBehaviour
     {
         for (int i = 0; i < _currentBrainrotAssetsCollection.Count; i++)
         {
-            _currentBrainrotAssetsCollection[i].GoTo(_endPosition.transform.position);
+            _currentBrainrotAssetsCollection[i].SetDestanation(_endPosition.transform.position);
         }
     }
 
@@ -70,7 +70,7 @@ public class ItemsFeed : MonoBehaviour
             var spawned = GetMob();
             spawned.transform.position = _startPosition.position;
             spawned.gameObject.SetActive(true);
-            spawned.GoTo(_endPosition.transform.position);
+            spawned.SetDestanation(_endPosition.transform.position);
         }
     }
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,30 +8,39 @@ public class BrainrotMob : MonoBehaviour, IInteractable
     public GameObject Model => _config.MobPrefab;
     public float Speed => _agent.speed;
     public Transform SelfTransform => transform;
-    public InteractAction InteractAction { get; private set; }
-
+    
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private MobInfoCanvas _mobInfoCanvas;
 
+    private StateMachine _stateMachine;
+    private MobStateData _mobStateData;
     private BrainrotMobConfig _config;
+
+    private void Update()
+    {
+        _stateMachine.Update();
+    }
 
     public void Initialize(BrainrotMobConfig config)
     {
         _config = config;
         Instantiate(_config.MobPrefab, transform);
         _mobInfoCanvas.Initialize(_config.Name, _config.BaseCost.ToString(), false);
-        InteractAction = new PurchasableMob(this);
-        InteractAction.ActionExecuted += OnMobBuyed;
+        _mobStateData = new MobStateData();
+
+        List<IState> states = new List<IState>()
+        {
+            new MobWalkingState(_stateMachine, _agent, _mobStateData, this),
+            new MobWorkingState(_stateMachine, _mobStateData, this),
+            new MobBeingCarriedState(_stateMachine, _mobStateData)
+        };
+
+        _stateMachine = new StateMachine(states);
     }
 
-    public void GoTo(Vector3 point)
+    public void SetDestanation(Vector3 destanationPoint)
     {
-        if(_agent.enabled == false)
-        {
-            _agent.enabled = true;
-            _agent.isStopped = false;
-        }
-        _agent.SetDestination(point);
+        _mobStateData.Destination = destanationPoint;
     }
 
     public void Stop()
@@ -41,12 +51,6 @@ public class BrainrotMob : MonoBehaviour, IInteractable
 
     public void Interact(IInteractor interactor)
     {
-        InteractAction.TryExecuteAction(interactor);
-    }
-
-    private void OnMobBuyed()
-    {
-        InteractAction.ActionExecuted -= OnMobBuyed;
-
+        _stateMachine.InputAction(interactor);
     }
 }
