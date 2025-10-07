@@ -8,6 +8,7 @@ public class MobHolder : MonoBehaviour
     public int Earned => _earned;
     public bool IsFree => _mob == null;
     public int MaxValue => _mob.Config.MaxEarning;
+    public Transform HoldingPosition => _holdingPosition;
 
     [SerializeField] private Transform _holdingPosition;
 
@@ -58,12 +59,5 @@ public class MobHolder : MonoBehaviour
         Debug.Log($"Add {_earned} to player");
         _owner.Wallet.AddMoney(_earned);
         _earned = 0;
-    }
-
-    internal void SetMobOnPosition()
-    {
-        _mob.Stop();
-        _mob.transform.position = _holdingPosition.position;
-        _mob.transform.rotation = _holdingPosition.rotation;
     }
 }

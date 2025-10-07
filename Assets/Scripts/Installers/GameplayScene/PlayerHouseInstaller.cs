@@ -5,7 +5,7 @@ using Zenject;
 
 public class PlayerHouseInstaller : MonoInstaller
 {
-    [SerializeField] private House _playerHouse;
+    [SerializeField] private PlayerHouse _playerHouse;
 
     public override void InstallBindings()
     {
@@ -14,6 +14,6 @@ public class PlayerHouseInstaller : MonoInstaller
 
     private void BindPlayerHouse()
     {
-        Container.Bind<House>().FromInstance(_playerHouse).AsSingle();
+        Container.Bind<PlayerHouse>().FromInstance(_playerHouse).AsSingle();
     }
 }

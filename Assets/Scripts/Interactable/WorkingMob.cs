@@ -38,6 +38,6 @@ public class WorkingMob : InteractAction
 
     private void StealMob(IInteractor interactor)
     {
-
+        _mob.Steal(interactor);
     }
 }

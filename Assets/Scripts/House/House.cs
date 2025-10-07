@@ -3,28 +3,17 @@ using Zenject;
 
 public class House : MonoBehaviour
 {
-    public bool IsClosed => _locker.IsClosed;
-    public bool HasFreeHolder => _mobCatcher.HasFreeHolder;
+    public bool IsClosed => Locker.IsClosed;
+    public bool HasFreeHolder => MobCatcher.HasFreeHolder;
 
-    [SerializeField] private MobsCatcher _mobCatcher;
-    [SerializeField] private HouseLocker _locker;
+    [SerializeField] protected MobsCatcher MobCatcher;
+    [SerializeField] protected HouseLocker Locker;
 
-    //TO DO: вынести в Construct
-    [SerializeField] private int _layerNumber;
-    private Player _owner;
+    protected int LayerNumber;
+    protected Player Owner;
 
     public MobHolder GetFreeHolder()
     {
-        return _mobCatcher.GetFreeHolder();
-    }
-
-    [Inject]
-    private void Construct(Player owner)
-    {
-        _owner = owner;
-        _owner.Initialize(this);
-        _owner.gameObject.layer = _layerNumber;
-        _mobCatcher.Initialize(_owner);
-        _locker.Initialize(_owner);
+        return MobCatcher.GetFreeHolder();
     }
 }

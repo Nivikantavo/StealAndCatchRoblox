@@ -9,10 +9,10 @@ public class MoneyView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _moneyView;
 
-    private Player _player;
+    private UserPlayer _player;
 
     [Inject]
-    private void Construct(Player player)
+    private void Construct(UserPlayer player)
     {
         _player = player;
         _player.Wallet.MoneyCountChanged += OnMoneyCountChanged;

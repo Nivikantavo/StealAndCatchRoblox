@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 2057709161839701008}
   - component: {fileID: 2603787302028604613}
   - component: {fileID: 1723676341866946881}
-  - component: {fileID: 1206361196492895635}
   - component: {fileID: 1239523240794878943}
+  - component: {fileID: 3691810667676434423}
   m_Layer: 0
   m_Name: ECM_Character
   m_TagString: Untagged
@@ -42,6 +42,7 @@ Transform:
   - {fileID: 2234739382158390377}
   - {fileID: 8589295739326436489}
   - {fileID: 3056458217056203046}
+  - {fileID: 3883921322722443149}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6120579558595778825
@@ -203,20 +204,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1206361196492895635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3254418688501178947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5396a73a978582049aeb21bde4ee718d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerInteractor: {fileID: 1239523240794878943}
-  _house: {fileID: 0}
 --- !u!114 &1239523240794878943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +217,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionRange: 3
-  _interactableView: {fileID: 0}
+  _carryMobHolder: {fileID: 3883921322722443149}
+--- !u!114 &3691810667676434423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3254418688501178947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d1c322920805fb4e90171e60633ad2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &7771721100913677953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3883921322722443149}
+  m_Layer: 0
+  m_Name: CarryPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3883921322722443149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7771721100913677953}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.236, z: 0.145}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3370312998098034047}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1768184974690554754
 PrefabInstance:
   m_ObjectHideFlags: 0

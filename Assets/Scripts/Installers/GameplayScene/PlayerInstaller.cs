@@ -5,7 +5,7 @@ using Zenject;
 
 public class PlayerInstaller : MonoInstaller
 {
-    [SerializeField] private Player _playerPrefab;
+    [SerializeField] private UserPlayer _playerPrefab;
     [SerializeField] private InteractableView _interactableView;
     [SerializeField] private Transform _playerSpawnPosition;
 
@@ -17,8 +17,8 @@ public class PlayerInstaller : MonoInstaller
 
     private void BindPlayer()
     {
-        Player player = Container.InstantiatePrefabForComponent<Player>(_playerPrefab, _playerSpawnPosition.position, Quaternion.identity, null);
-        Container.BindInterfacesAndSelfTo<Player>().FromInstance(player).AsSingle();
+        UserPlayer player = Container.InstantiatePrefabForComponent<UserPlayer>(_playerPrefab, _playerSpawnPosition.position, Quaternion.identity, null);
+        Container.BindInterfacesAndSelfTo<UserPlayer>().FromInstance(player).AsSingle();
     }
 
     private void BindInteractView()

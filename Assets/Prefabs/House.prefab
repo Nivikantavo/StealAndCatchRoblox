@@ -2608,10 +2608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0553401cd33ec9b4b9f28bd6192ea721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mobCatcher: {fileID: 2902108618196055037}
-  _locker: {fileID: 6369747885704406799}
-  _layerNumber: 7
-  _owner: {fileID: 0}
+  MobCatcher: {fileID: 2902108618196055037}
+  Locker: {fileID: 6369747885704406799}
 --- !u!114 &6369747885704406799
 MonoBehaviour:
   m_ObjectHideFlags: 0

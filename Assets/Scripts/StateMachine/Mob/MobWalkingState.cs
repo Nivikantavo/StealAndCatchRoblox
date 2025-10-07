@@ -11,24 +11,27 @@ public class MobWalkingState : IState
 
     private Vector3 _destinationPoint;
     private InteractAction _interactAction;
+    private BrainrotMob _mob;
 
     public MobWalkingState(IStateSwitcher stateSwitcher, NavMeshAgent agent, MobStateData mobStateData, BrainrotMob mob)
     {
         _stateSwitcher = stateSwitcher;
         _agent = agent;
         _mobStateData = mobStateData;
-        _interactAction = new PurchasableMob(mob);
+        _mob = mob;
+        _interactAction = new PurchasableMob(_mob);
     }
 
     public void Enter()
     {
         Debug.Log($"Enter {GetType()}");
+        _agent.enabled = true;
+        _mobStateData.IsSold = false;
         SetNewDestination(_mobStateData.Destination);
     }
 
     public void Exit()
     {
-        _agent.isStopped = true;
         _agent.enabled = false;
     }
 
@@ -44,7 +47,7 @@ public class MobWalkingState : IState
             SetNewDestination(_mobStateData.Destination);
         }
 
-        if(_mobStateData.CurrentHolder != null && !_mobStateData.IsCarryng)
+        if(_mobStateData.CurrentHolder != null && _mobStateData.Stealer == null)
         {
             _stateSwitcher.SwitchState<MobWorkingState>();
             return;

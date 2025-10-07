@@ -8,7 +8,7 @@ public class StateMachine : IStateSwitcher
     private List<IState> _states = new List<IState>();
     private IState _currentState;
 
-    public StateMachine(List<IState> states)
+    public void Initialize(List<IState> states)
     {
         _states = states;
 

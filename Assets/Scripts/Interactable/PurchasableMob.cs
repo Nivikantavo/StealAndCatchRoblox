@@ -11,7 +11,7 @@ public class PurchasableMob : InteractAction
 
     public override bool TryExecuteAction(IInteractor interactor)
     {
-        MobHolder holder = interactor.CarryPosition;
+        MobHolder holder = interactor.MobHolder;
         if (holder == null)
         {
             Debug.Log("No free holders in the house.");

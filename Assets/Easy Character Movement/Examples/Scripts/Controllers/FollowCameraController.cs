@@ -67,7 +67,7 @@ namespace ECM.Examples
         }
 
         [Inject]
-        private void Construct(Player player)
+        private void Construct(UserPlayer player)
         {
             _targetTransform = player.transform;
         }

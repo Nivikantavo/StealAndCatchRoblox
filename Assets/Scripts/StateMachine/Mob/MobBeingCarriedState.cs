@@ -15,7 +15,7 @@ public class MobBeingCarriedState : IState
 
     public void Enter()
     {
-        
+        Debug.Log($"Enter {GetType()}");
     }
 
     public void Exit()
@@ -30,7 +30,7 @@ public class MobBeingCarriedState : IState
 
     public void Update()
     {
-        if(_mobStateData.CurrentHolder != null && !_mobStateData.IsCarryng)
+        if(_mobStateData.Stealer == null)
         {
             _stateSwitcher.SwitchState<MobWorkingState>();
             return;

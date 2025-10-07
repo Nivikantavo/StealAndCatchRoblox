@@ -39,7 +39,7 @@ public class MobsCatcher : MonoBehaviour
         MobHolder holder = _mobHolders.FirstOrDefault(holder => holder.ItsMyMob(mob));
         if (holder != null)
         {
-            holder.SetMobOnPosition();
+            mob.SetNewHolder(holder);
         }
     }
 }

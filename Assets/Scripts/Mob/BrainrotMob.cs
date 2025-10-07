@@ -8,7 +8,8 @@ public class BrainrotMob : MonoBehaviour, IInteractable
     public GameObject Model => _config.MobPrefab;
     public float Speed => _agent.speed;
     public Transform SelfTransform => transform;
-    
+    public int Price => Config.BaseCost;
+
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private MobInfoCanvas _mobInfoCanvas;
 
@@ -27,6 +28,7 @@ public class BrainrotMob : MonoBehaviour, IInteractable
         Instantiate(_config.MobPrefab, transform);
         _mobInfoCanvas.Initialize(_config.Name, _config.BaseCost.ToString(), false);
         _mobStateData = new MobStateData();
+        _stateMachine = new StateMachine();
 
         List<IState> states = new List<IState>()
         {
@@ -35,7 +37,7 @@ public class BrainrotMob : MonoBehaviour, IInteractable
             new MobBeingCarriedState(_stateMachine, _mobStateData)
         };
 
-        _stateMachine = new StateMachine(states);
+        _stateMachine.Initialize(states);
     }
 
     public void SetDestanation(Vector3 destanationPoint)
@@ -52,5 +54,27 @@ public class BrainrotMob : MonoBehaviour, IInteractable
     public void Interact(IInteractor interactor)
     {
         _stateMachine.InputAction(interactor);
+    }
+
+    public void SetNewHolder(MobHolder holder)
+    {
+        _mobStateData.CurrentHolder = holder;
+    }
+
+    public void Steal(IInteractor interactor)
+    {
+        _mobStateData.Stealer = interactor;
+    }
+
+    public void Drop()
+    {
+        _mobStateData.Stealer = null;
+    }
+
+    public void SetOnHolder()
+    {
+        Stop();
+        transform.position = _mobStateData.CurrentHolder.HoldingPosition.position;
+        transform.rotation = _mobStateData.CurrentHolder.HoldingPosition.rotation;
     }
 }
