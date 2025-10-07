@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System;
+using System.Buffers;
 using UnityEngine;
 
 public class MobHolder : MonoBehaviour
@@ -9,6 +10,7 @@ public class MobHolder : MonoBehaviour
     public bool IsFree => _mob == null;
     public int MaxValue => _mob.Config.MaxEarning;
     public Transform HoldingPosition => _holdingPosition;
+    public IInteractor Owner => _owner.Interactor;
 
     [SerializeField] private Transform _holdingPosition;
 
@@ -44,8 +46,9 @@ public class MobHolder : MonoBehaviour
 
     public void AddMoney(int amount)
     {
-        if (amount < 0) return;
+        if (amount < 0 || _earned >= MaxValue) return;
         _earned += amount;
+        _earned = Mathf.Clamp(_earned, 0, MaxValue);
         MoneyCountChanged?.Invoke(_earned);
     }
 

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1723676341866946881}
   - component: {fileID: 1239523240794878943}
   - component: {fileID: 3691810667676434423}
+  - component: {fileID: 2219540870484760990}
   m_Layer: 0
   m_Name: ECM_Character
   m_TagString: Untagged
@@ -217,7 +218,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionRange: 3
-  _carryMobHolder: {fileID: 3883921322722443149}
 --- !u!114 &3691810667676434423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +230,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1c322920805fb4e90171e60633ad2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2219540870484760990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3254418688501178947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a1c25081ab392744a4e6539ffd9d05e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _carryPoint: {fileID: 3883921322722443149}
 --- !u!1 &7771721100913677953
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +268,7 @@ Transform:
   m_GameObject: {fileID: 7771721100913677953}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.236, z: 0.145}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

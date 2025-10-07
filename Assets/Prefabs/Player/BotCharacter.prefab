@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 3820144715913284616}
   - component: {fileID: 8339193674261511813}
   - component: {fileID: 4152768602356266677}
+  - component: {fileID: 2790885250385361980}
   m_Layer: 0
   m_Name: BotCharacter
   m_TagString: Untagged
@@ -182,7 +183,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.1
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -208,6 +209,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _findTargetDistance: 50
   _agent: {fileID: 8339193674261511813}
+--- !u!114 &2790885250385361980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4669539437923044835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a1c25081ab392744a4e6539ffd9d05e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _carryPoint: {fileID: 4647141583814290301}
 --- !u!1001 &1330156100826386781
 PrefabInstance:
   m_ObjectHideFlags: 0

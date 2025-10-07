@@ -9,14 +9,16 @@ public class MobWorkingState : IState
 
     private float _elapsedTime = 0;
     private BrainrotMob _mob;
-    private InteractAction _interactAction;
+    private InteractAction _saleAction;
+    private InteractAction _stealAction;
 
     public MobWorkingState(IStateSwitcher stateSwitcher, MobStateData mobStateData, BrainrotMob mob)
     {
         _stateSwitcher = stateSwitcher;
         _mobStateData = mobStateData;
         _mob = mob;
-        _interactAction = new WorkingMob(_mobStateData.Owner, mob);
+        _saleAction = new SellableMob(_mobStateData, mob);
+        _stealAction = new StealableMob(_mobStateData, mob);
     }
 
     public void Enter()
@@ -28,17 +30,25 @@ public class MobWorkingState : IState
 
     public void Exit()
     {
-        _mobStateData.CurrentHolder = null;
+        _elapsedTime = 0;
     }
 
     public void InputAction(IInteractor interactor)
     {
-        _interactAction.TryExecuteAction(interactor);
+        if(interactor == _mobStateData.Owner)
+        {
+            _saleAction.TryExecuteAction(interactor);
+        }
+        else
+        {
+            _stealAction.TryExecuteAction(interactor);
+        }
+
     }
 
     public void Update()
     {
-        if(_mobStateData.Stealer != null)
+        if(_mobStateData.StealerPlayer != null)
         {
             _stateSwitcher.SwitchState<MobBeingCarriedState>();
             return;

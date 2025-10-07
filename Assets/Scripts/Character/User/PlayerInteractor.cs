@@ -8,12 +8,11 @@ public class PlayerInteractor : MonoBehaviour, IInteractor
     public Transform HouseTransform { get; private set; }
     public IWallet Wallet => _player.Wallet;
     public MobHolder MobHolder => _player.GetFreeMobHolder();
-    public Transform CarryPosition => _carryMobHolder;
+    public IStealer Stealer => _player.Stealer;
 
     [SerializeField] private float _interactionRange = 3f;
-    [SerializeField] private Transform _carryMobHolder;
-    private InteractableView _interactableView;
 
+    private InteractableView _interactableView;
     private IInteractable _currentInteractable;
     private Player _player;
 

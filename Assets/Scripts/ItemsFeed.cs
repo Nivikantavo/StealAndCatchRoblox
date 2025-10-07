@@ -77,10 +77,14 @@ public class ItemsFeed : MonoBehaviour
     private BrainrotMob GetMob()
     {
         BrainrotMob resultBrainrot = _currentBrainrotAssetsCollection.FirstOrDefault(brainrot => brainrot.gameObject.activeInHierarchy == false);
-
+        
         if (resultBrainrot == null)
         {
             resultBrainrot = SpawnMob(_startPosition.position, GetMissingConfig());
+        }
+        else
+        {
+            resultBrainrot.ResetMob();
         }
         return resultBrainrot;
     }

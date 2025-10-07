@@ -52,7 +52,6 @@ public class InteractableView : MonoBehaviour
 
     private void OnInteractButtonClicked()
     {
-        Debug.Log("Interact button clicked");
         OnInteract?.Invoke();
     }
 }

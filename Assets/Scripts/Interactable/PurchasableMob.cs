@@ -26,6 +26,7 @@ public class PurchasableMob : InteractAction
         {
             Debug.Log("Mob bought successfully.");
             ExecuteAction(interactor);
+            PurchaseMob(holder);
             holder.SetMob(_mob);
             return true;
         }
@@ -33,12 +34,11 @@ public class PurchasableMob : InteractAction
 
     protected override void ExecuteAction(IInteractor interactor)
     {
-        PurchaseMob(interactor.HouseTransform);
         base.ExecuteAction(interactor);
     }
 
-    private void PurchaseMob(Transform targetHouse)
+    private void PurchaseMob(MobHolder holder)
     {
-        _mob.SetDestanation(targetHouse.position);
+        _mob.SetNewHolder(holder);
     }
 }

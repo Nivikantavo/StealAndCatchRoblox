@@ -9,6 +9,7 @@ public class BrainrotMob : MonoBehaviour, IInteractable
     public float Speed => _agent.speed;
     public Transform SelfTransform => transform;
     public int Price => Config.BaseCost;
+    public IInteractor Owner => _mobStateData.Owner;
 
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private MobInfoCanvas _mobInfoCanvas;
@@ -33,11 +34,18 @@ public class BrainrotMob : MonoBehaviour, IInteractable
         List<IState> states = new List<IState>()
         {
             new MobWalkingState(_stateMachine, _agent, _mobStateData, this),
+            new MobGoingOnHolderState(_stateMachine, _agent, _mobStateData, this),
             new MobWorkingState(_stateMachine, _mobStateData, this),
-            new MobBeingCarriedState(_stateMachine, _mobStateData)
+            new MobBeingCarriedState(_stateMachine, _mobStateData, this)
         };
 
         _stateMachine.Initialize(states);
+    }
+
+    public void ResetMob()
+    {
+        _mobStateData.ResetData();
+        _stateMachine.SwitchState<MobWalkingState>();
     }
 
     public void SetDestanation(Vector3 destanationPoint)
@@ -47,7 +55,6 @@ public class BrainrotMob : MonoBehaviour, IInteractable
 
     public void Stop()
     {
-        _agent.isStopped = true;
         _agent.enabled = false;
     }
 
@@ -59,21 +66,23 @@ public class BrainrotMob : MonoBehaviour, IInteractable
     public void SetNewHolder(MobHolder holder)
     {
         _mobStateData.CurrentHolder = holder;
+        _mobStateData.Owner = holder.Owner;
     }
 
     public void Steal(IInteractor interactor)
     {
-        _mobStateData.Stealer = interactor;
+        _mobStateData.StealerPlayer = interactor;
+        Debug.Log(interactor);
     }
 
     public void Drop()
     {
-        _mobStateData.Stealer = null;
+        _mobStateData.StealerPlayer = null;
+        transform.SetParent(null);
     }
 
     public void SetOnHolder()
     {
-        Stop();
         transform.position = _mobStateData.CurrentHolder.HoldingPosition.position;
         transform.rotation = _mobStateData.CurrentHolder.HoldingPosition.rotation;
     }

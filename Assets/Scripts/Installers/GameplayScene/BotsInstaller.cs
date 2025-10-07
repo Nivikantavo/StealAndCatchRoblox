@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 using Zenject;
 
 public class BotsInstaller : MonoInstaller
@@ -9,7 +10,7 @@ public class BotsInstaller : MonoInstaller
     [SerializeField] private BotPlayer _botTemplate;
     [SerializeField] private BotsHouse _botHouseTemplate;
     [SerializeField] private List<Transform> _housesPositions;
-    [SerializeField] private NavMeshSurface _navmeshSurface;
+    [SerializeField] private NavMeshSurface _navMeshSurface;
 
     public override void InstallBindings()
     {
@@ -24,5 +25,7 @@ public class BotsInstaller : MonoInstaller
             BotPlayer botPlayer = Container.InstantiatePrefabForComponent<BotPlayer>(_botTemplate, spawnedHouse.OwnerSpawnPosition.position, Quaternion.identity, null);
             spawnedHouse.Initialzie(botPlayer, i + 8);
         }
+
+        _navMeshSurface.BuildNavMesh();
     }
 }

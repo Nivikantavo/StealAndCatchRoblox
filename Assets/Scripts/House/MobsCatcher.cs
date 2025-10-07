@@ -41,5 +41,16 @@ public class MobsCatcher : MonoBehaviour
         {
             mob.SetNewHolder(holder);
         }
+        else
+        {
+            holder = _mobHolders.FirstOrDefault(holder => holder.IsFree);
+            if (holder != null)
+            {
+                mob.SetNewHolder(holder);
+                mob.Drop();
+                holder.SetMob(mob);
+            }
+        }
+
     }
 }

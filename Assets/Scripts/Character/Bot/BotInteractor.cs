@@ -7,13 +7,12 @@ public class BotInteractor : MonoBehaviour, IInteractor
     public Transform HouseTransform { get; private set; }
     public IWallet Wallet => _player.Wallet;
     public MobHolder MobHolder => _player.GetFreeMobHolder();
-    public Transform CarryPosition => _carryMobHolder;
     public float InteractionRange => _interactionRange;
+    public IStealer Stealer => _player.Stealer;
+    
+    [SerializeField] private float _interactionRange = 3f;
 
     private Player _player;
-    [SerializeField] private float _interactionRange = 3f;
-    [SerializeField] private Transform _carryMobHolder;
-
 
     public void Initialize(Player player, Transform houseTransform)
     {
@@ -32,7 +31,7 @@ public class BotInteractor : MonoBehaviour, IInteractor
             if (hitCollider.TryGetComponent<IInteractable>(out var interactable))
             {
                 float distance = Vector3.Distance(SelfTransform.position, hitCollider.transform.position);
-                if (colsestInteractable.Contains(interactable) == false)
+                if (colsestInteractable.Contains(interactable) == false && interactable.Owner != this)
                 {
                     colsestInteractable.Add(interactable);
                 }

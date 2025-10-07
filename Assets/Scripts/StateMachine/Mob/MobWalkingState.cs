@@ -24,15 +24,14 @@ public class MobWalkingState : IState
 
     public void Enter()
     {
-        Debug.Log($"Enter {GetType()}");
+        //Debug.Log($"Enter {GetType()}");
         _agent.enabled = true;
-        _mobStateData.IsSold = false;
-        SetNewDestination(_mobStateData.Destination);
     }
 
     public void Exit()
     {
         _agent.enabled = false;
+        _destinationPoint = Vector3.zero;
     }
 
     public void InputAction(IInteractor interactor)
@@ -47,9 +46,9 @@ public class MobWalkingState : IState
             SetNewDestination(_mobStateData.Destination);
         }
 
-        if(_mobStateData.CurrentHolder != null && _mobStateData.Stealer == null)
+        if(_mobStateData.CurrentHolder != null && _mobStateData.StealerPlayer == null)
         {
-            _stateSwitcher.SwitchState<MobWorkingState>();
+            _stateSwitcher.SwitchState<MobGoingOnHolderState>();
             return;
         }
     }

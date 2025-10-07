@@ -460,7 +460,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_UseGeometry: 0
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
@@ -617,13 +617,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779498233}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -25, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1920202193}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1173,7 @@ GameObject:
   - component: {fileID: 1569976168}
   - component: {fileID: 1569976167}
   - component: {fileID: 1569976169}
+  - component: {fileID: 1569976170}
   m_Layer: 0
   m_Name: MovingPlatform
   m_TagString: Untagged
@@ -1283,10 +1284,31 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4c18bf46607090e42b66b82d348d1ba6, type: 2}
   - {fileID: 11400000, guid: e00075095eabddb41be36489a2589158, type: 2}
   - {fileID: 11400000, guid: 76de4dd158000914fb22371ee9c8c2d9, type: 2}
-  _distanceBetweenAssets: 5
+  _distanceBetweenAssets: 10
   _spawnedContainer: {fileID: 1106850873}
   _mobTemplate: {fileID: 3875773716537781454, guid: 0aa9977292d2c384aabaaa0a8060ec08,
     type: 3}
+--- !u!65 &1569976170
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569976164}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.99999994, y: 1, z: 0.9999999}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1822890419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,8 +1357,8 @@ MonoBehaviour:
     type: 3}
   _botHouseTemplate: {fileID: 7366879954355526896, guid: 33404218241f6624ca9d737e012ccf5b,
     type: 3}
-  _housesPositions:
-  - {fileID: 779498234}
+  _housesPositions: []
+  _navMeshSurface: {fileID: 704629794}
 --- !u!1 &1886473429
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,7 +1388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a419d0a5e1d75784780b59fc0cfa2624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerHouse: {fileID: 0}
+  _playerHouse: {fileID: 1430472410}
 --- !u!4 &1886473431
 Transform:
   m_ObjectHideFlags: 0
@@ -1430,7 +1452,7 @@ PrefabInstance:
     - target: {fileID: 3681702772121210953, guid: 6250ff2c23d5e704eaf29d28b0004bd5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3681702772121210953, guid: 6250ff2c23d5e704eaf29d28b0004bd5,
         type: 3}
