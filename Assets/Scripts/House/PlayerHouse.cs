@@ -14,5 +14,6 @@ public class PlayerHouse : House
         Owner.gameObject.layer = LayerNumber;
         MobCatcher.Initialize(Owner);
         Locker.Initialize(Owner);
+        SecuritySystem.Initialize(Holders, Owner);
     }
 }

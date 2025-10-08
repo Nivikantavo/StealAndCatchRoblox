@@ -1,10 +1,11 @@
-using Cysharp.Threading.Tasks;
 using System;
-using System.Buffers;
 using UnityEngine;
 
 public class MobHolder : MonoBehaviour
 {
+    public Action<IInteractable> MobWasStolen;
+    public Action<IInteractable> StolenMobLost;
+
     public event Action<int> MoneyCountChanged;
     public int Earned => _earned;
     public bool IsFree => _mob == null;
@@ -33,14 +34,18 @@ public class MobHolder : MonoBehaviour
             }
         }
     }
-
+    
     public void SetMob(BrainrotMob mob)
     {
         _mob = mob;
+        _mob.Taked += OnMobWasStolen;
+        _mob.Stolen += MobWasLost;
     }
 
     public void ClearMob()
     {
+        _mob.Taked -= OnMobWasStolen;
+        _mob.Stolen -= MobWasLost;
         _mob = null;
     }
 
@@ -62,5 +67,15 @@ public class MobHolder : MonoBehaviour
         Debug.Log($"Add {_earned} to player");
         _owner.Wallet.AddMoney(_earned);
         _earned = 0;
+    }
+
+    private void OnMobWasStolen()
+    {
+        MobWasStolen?.Invoke(_mob);
+    }
+
+    private void MobWasLost()
+    {
+        StolenMobLost?.Invoke(_mob);
     }
 }

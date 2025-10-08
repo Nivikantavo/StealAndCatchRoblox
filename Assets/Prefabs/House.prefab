@@ -2563,8 +2563,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3681702772121210953}
-  - component: {fileID: 4224295485587711667}
   - component: {fileID: 6369747885704406799}
+  - component: {fileID: 3055763762252317811}
+  - component: {fileID: 6251584418024020730}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -2596,20 +2597,6 @@ Transform:
   - {fileID: 999534495580791157}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4224295485587711667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2319887945653199234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0553401cd33ec9b4b9f28bd6192ea721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MobCatcher: {fileID: 2902108618196055037}
-  Locker: {fileID: 6369747885704406799}
 --- !u!114 &6369747885704406799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2624,6 +2611,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lockButton: {fileID: 6912293460259505657}
   _lock: {fileID: 5057081676750109986}
+--- !u!114 &3055763762252317811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319887945653199234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1230846c74dec9d49b6f702732f9e550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6251584418024020730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319887945653199234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6150a85794767c749b7c9f1a25ae2f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MobCatcher: {fileID: 2902108618196055037}
+  Locker: {fileID: 6369747885704406799}
+  Holders:
+  - {fileID: 3371639484806041324}
+  - {fileID: 1370227047824472646}
+  - {fileID: 3853917511907789882}
+  - {fileID: 6637245881132777919}
+  - {fileID: 3053778336660163112}
+  - {fileID: 7149031576639868362}
+  - {fileID: 2965089423930673650}
+  - {fileID: 3743043226780535406}
+  - {fileID: 4818917256970967671}
+  - {fileID: 3041262205485182739}
+  - {fileID: 5972498331980624932}
+  - {fileID: 40536843793544409}
+  - {fileID: 4017196841076433307}
+  - {fileID: 7709201397746367315}
+  SecuritySystem: {fileID: 3055763762252317811}
 --- !u!1 &2351208973357792273
 GameObject:
   m_ObjectHideFlags: 0

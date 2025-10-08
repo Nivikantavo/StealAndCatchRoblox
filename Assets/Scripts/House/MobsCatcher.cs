@@ -37,11 +37,7 @@ public class MobsCatcher : MonoBehaviour
     private void SetMobOnHolder(BrainrotMob mob)
     {
         MobHolder holder = _mobHolders.FirstOrDefault(holder => holder.ItsMyMob(mob));
-        if (holder != null)
-        {
-            mob.SetNewHolder(holder);
-        }
-        else
+        if(holder == null)
         {
             holder = _mobHolders.FirstOrDefault(holder => holder.IsFree);
             if (holder != null)

@@ -14,6 +14,6 @@ public class PlayerHouseInstaller : MonoInstaller
 
     private void BindPlayerHouse()
     {
-        Container.Bind<PlayerHouse>().FromInstance(_playerHouse).AsSingle();
+        Container.Bind<PlayerHouse>().FromInstance(_playerHouse).AsSingle().NonLazy();
     }
 }

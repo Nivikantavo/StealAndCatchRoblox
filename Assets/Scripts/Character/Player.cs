@@ -5,6 +5,7 @@ using Zenject;
 
 public abstract class Player : MonoBehaviour
 {
+    public bool IsHouseClosed => _house.IsClosed;
     public IInteractor Interactor => _interactor;
     public IWallet Wallet => _wallet;
     public IStealer Stealer => _mobStealer;
@@ -33,4 +34,7 @@ public abstract class Player : MonoBehaviour
     {
         _mobStealer.LoseMob();
     }
+
+    public abstract void OnMobStolen(IInteractable stolenMob);
+    public abstract void OnMobLost(IInteractable stolenMob);
 }

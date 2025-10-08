@@ -24,6 +24,7 @@ public class PlayerInteractor : MonoBehaviour, IInteractor
 
     public void Initialize(Player player, Transform houseTransform)
     {
+        Debug.Log(player);
         _player = player;
         SelfTransform = _player.transform;
         HouseTransform = houseTransform;

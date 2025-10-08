@@ -1,14 +1,18 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class BrainrotMob : MonoBehaviour, IInteractable
 {
+    public event Action Taked;
+    public event Action Stolen;
     public BrainrotMobConfig Config => _config;
     public GameObject Model => _config.MobPrefab;
     public float Speed => _agent.speed;
-    public Transform SelfTransform => transform;
     public int Price => Config.BaseCost;
+    public bool IsGraped => _mobStateData.StealerPlayer != null;
+    public Transform SelfTransform => transform;
     public IInteractor Owner => _mobStateData.Owner;
 
     [SerializeField] private NavMeshAgent _agent;
@@ -65,6 +69,11 @@ public class BrainrotMob : MonoBehaviour, IInteractable
 
     public void SetNewHolder(MobHolder holder)
     {
+        if(_mobStateData.CurrentHolder != null)
+        {
+            Stolen?.Invoke();
+            _mobStateData.CurrentHolder.ClearMob();
+        }
         _mobStateData.CurrentHolder = holder;
         _mobStateData.Owner = holder.Owner;
     }
@@ -72,7 +81,7 @@ public class BrainrotMob : MonoBehaviour, IInteractable
     public void Steal(IInteractor interactor)
     {
         _mobStateData.StealerPlayer = interactor;
-        Debug.Log(interactor);
+        Taked?.Invoke();
     }
 
     public void Drop()

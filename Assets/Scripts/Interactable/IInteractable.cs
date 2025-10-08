@@ -3,6 +3,7 @@ using UnityEngine;
 public interface IInteractable
 {
     public int Price { get;}
+    public bool IsGraped { get; }
     public Transform SelfTransform { get; }
     void Interact(IInteractor interactor);
     public IInteractor Owner { get; }

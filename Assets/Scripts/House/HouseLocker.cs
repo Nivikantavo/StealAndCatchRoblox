@@ -6,6 +6,7 @@ using UnityEngine;
 public class HouseLocker : MonoBehaviour
 {
     public bool IsClosed => _lock.gameObject.activeSelf;
+    public Transform LockButtonPosition => _lockButton.transform;
 
     [SerializeField] private HouseLockerButton _lockButton;
     [SerializeField] private GameObject _lock;
