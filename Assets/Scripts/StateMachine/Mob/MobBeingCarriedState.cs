@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class MobBeingCarriedState : IState
 {
     private readonly IStateSwitcher _stateSwitcher;
@@ -17,7 +13,6 @@ public class MobBeingCarriedState : IState
 
     public void Enter()
     {
-        Debug.Log($"Enter {GetType()}");
         _mobStateData.StealerPlayer.Stealer.GrabMob(_mob);
     }
 

@@ -1,19 +1,22 @@
 using BehaviorDesigner.Runtime.Tasks;
 
-public class BuyMob : BotAction
+namespace BotBehavior
 {
-    public override void OnStart()
+    public class BuyMob : BotAction
     {
-        Bot.CurrentTarget.Interact(Bot.Interactor);
-    }
-
-    public override TaskStatus OnUpdate()
-    {
-        if(Bot.CurrentTarget.Owner == Bot.Interactor)
+        public override void OnStart()
         {
-            Bot.ResetTarget();
-            return TaskStatus.Success;
+            Bot.BehaviorTreeData.CurrentTarget.Interact(Bot.Interactor);
         }
-        return TaskStatus.Failure;
+
+        public override TaskStatus OnUpdate()
+        {
+            if (Bot.BehaviorTreeData.CurrentTarget.Owner == Bot.Interactor)
+            {
+                Bot.ResetTarget();
+                return TaskStatus.Success;
+            }
+            return TaskStatus.Failure;
+        }
     }
 }

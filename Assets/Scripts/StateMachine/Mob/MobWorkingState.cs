@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MobWorkingState : IState
@@ -23,7 +21,6 @@ public class MobWorkingState : IState
 
     public void Enter()
     {
-        Debug.Log($"Enter {GetType()}");
         _mob.SetOnHolder();
         _elapsedTime = 0;
     }

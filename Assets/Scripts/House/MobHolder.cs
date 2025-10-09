@@ -64,7 +64,6 @@ public class MobHolder : MonoBehaviour
 
     private void AddEarningsToPlayer()
     {
-        Debug.Log($"Add {_earned} to player");
         _owner.Wallet.AddMoney(_earned);
         _earned = 0;
     }

@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1239523240794878943}
   - component: {fileID: 3691810667676434423}
   - component: {fileID: 2219540870484760990}
+  - component: {fileID: 6260061188816835311}
   m_Layer: 0
   m_Name: ECM_Character
   m_TagString: Untagged
@@ -243,6 +244,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carryPoint: {fileID: 3883921322722443149}
+--- !u!114 &6260061188816835311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3254418688501178947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f61d7a1466248b41aa27ae5a6361cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxDistance: 3
+  _maxAngle: 60
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7771721100913677953
 GameObject:
   m_ObjectHideFlags: 0

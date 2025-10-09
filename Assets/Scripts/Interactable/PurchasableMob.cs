@@ -14,17 +14,14 @@ public class PurchasableMob : InteractAction
         MobHolder holder = interactor.MobHolder;
         if (holder == null)
         {
-            Debug.Log("No free holders in the house.");
             return false;
         }
         else if (interactor.Wallet.TrySpendMoney(_mob.Config.BaseCost) == false)
         {
-            Debug.Log("Not enough money to buy the mob.");
             return false;
         }
         else
         {
-            Debug.Log("Mob bought successfully.");
             ExecuteAction(interactor);
             PurchaseMob(holder);
             holder.SetMob(_mob);

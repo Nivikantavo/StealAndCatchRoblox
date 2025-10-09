@@ -28,7 +28,10 @@ public class MobStealer : MonoBehaviour, IStealer
 
     public void LoseMob()
     {
-        _stolenMob.Drop();
-        _stolenMob = null;
+        if( _stolenMob != null )
+        {
+            _stolenMob.Drop();
+            _stolenMob = null;
+        }
     }
 }

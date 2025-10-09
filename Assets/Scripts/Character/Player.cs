@@ -5,15 +5,25 @@ using Zenject;
 
 public abstract class Player : MonoBehaviour
 {
-    public bool IsHouseClosed => _house.IsClosed;
     public IInteractor Interactor => _interactor;
     public IWallet Wallet => _wallet;
     public IStealer Stealer => _mobStealer;
 
-    protected IInteractor _interactor;
+    private IInteractor _interactor;
+    protected PlayerFighter _fighter;
+    protected CharacterAnimation _characterAnimation;
     protected House _house;
     protected Wallet _wallet;
     protected MobStealer _mobStealer;
+
+    protected float AttackCooldown = 2;
+    protected float AttackElapsedTime = 0;
+
+    protected virtual void Update()
+    {
+        if(AttackElapsedTime <  AttackCooldown)
+            AttackElapsedTime += Time.deltaTime;
+    }
 
     public MobHolder GetFreeMobHolder()
     {
@@ -24,14 +34,29 @@ public abstract class Player : MonoBehaviour
     {
         _house = house;
         _interactor = GetComponent<IInteractor>();
-        _interactor.Initialize(this, _house.transform);
+        _fighter = GetComponent<PlayerFighter>();
         _mobStealer = GetComponent<MobStealer>();
+        _characterAnimation = GetComponent<CharacterAnimation>();
+
+        _interactor.Initialize(this, _house.transform);
         _mobStealer.Initialize(_interactor);
+        _fighter.Initialize(this);
         _wallet = new Wallet(1000);
     }
 
-    public void TakeHit()
+    public virtual void Attack()
     {
+        if (AttackElapsedTime >= AttackCooldown)
+        {
+            _characterAnimation.SetAttack();
+            _fighter.Attack();
+            AttackElapsedTime = 0;
+        }
+    }
+
+    public virtual void TakeHit()
+    {
+        Debug.Log("Hit " + gameObject.name);
         _mobStealer.LoseMob();
     }
 

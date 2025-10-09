@@ -1,17 +1,17 @@
 using BehaviorDesigner.Runtime.Tasks;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class CloseHouse : BotAction
+namespace BotBehavior
 {
-    public override void OnStart()
+    public class CloseHouse : BotAction
     {
-        Bot.GoTo(Bot.LockHouseButton);
-    }
+        public override void OnStart()
+        {
+            Bot.GoTo(Bot.BehaviorTreeData.LockHouseButton);
+        }
 
-    public override TaskStatus OnUpdate()
-    {
-        return Bot.IsHouseClosed ? TaskStatus.Success : TaskStatus.Running;
+        public override TaskStatus OnUpdate()
+        {
+            return Bot.BehaviorTreeData.IsHouseClosed ? TaskStatus.Success : TaskStatus.Running;
+        }
     }
 }

@@ -1,27 +1,27 @@
 using BehaviorDesigner.Runtime.Tasks;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class ChooseFreeMob : BotAction
+namespace BotBehavior
 {
-    public override void OnStart()
+    public class ChooseFreeMob : BotAction
     {
-        Bot.ChooseFreeTarget();
-    }
-
-    public override TaskStatus OnUpdate()
-    {
-        if(Bot.CurrentTarget == null)
+        public override void OnStart()
         {
-            return TaskStatus.Failure;
+            Bot.ChooseFreeTarget();
         }
 
-        if(Bot.CurrentTarget.Owner != null)
+        public override TaskStatus OnUpdate()
         {
-            return TaskStatus.Failure;
-        }
+            if (Bot.BehaviorTreeData.CurrentTarget == null)
+            {
+                return TaskStatus.Failure;
+            }
 
-        return TaskStatus.Success;
+            if (Bot.BehaviorTreeData.CurrentTarget.Owner != null)
+            {
+                return TaskStatus.Failure;
+            }
+
+            return TaskStatus.Success;
+        }
     }
 }

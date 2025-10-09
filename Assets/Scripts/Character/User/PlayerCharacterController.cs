@@ -15,10 +15,5 @@ public class PlayerCharacterController : BaseCharacterController
         _characterAnimation.SetIsMoving(moveDirection != Vector3.zero);
         _characterAnimation.SetJumping(isJumping);
         _characterAnimation.SetFalling(isFalling);
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            _characterAnimation.SetAttack();
-        }
     }
 }

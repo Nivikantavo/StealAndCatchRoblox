@@ -1,12 +1,23 @@
 using BehaviorDesigner.Runtime.Tasks;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class NeedLockHouseCondition : BotCondition
+namespace BotBehavior
 {
-    public override TaskStatus OnUpdate()
+    public class NeedLockHouseCondition : BotCondition
     {
-        return Bot.IsHouseClosed ? TaskStatus.Failure : TaskStatus.Success;
+        public override TaskStatus OnUpdate()
+        {
+            if (Bot.BehaviorTreeData.IsHouseClosed)
+            {
+                return TaskStatus.Failure;
+            }
+            else
+            {
+                if (Bot.BehaviorTreeData.HasMobsOnHouse)
+                {
+                    return TaskStatus.Success;
+                }
+            }
+            return TaskStatus.Failure;
+        }
     }
 }

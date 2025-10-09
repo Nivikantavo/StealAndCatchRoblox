@@ -5,7 +5,6 @@ using UnityEngine;
 public interface IStealer
 {
     public bool IsCarries { get; }
-
     void GrabMob(BrainrotMob mob);
     void LoseMob();
 }

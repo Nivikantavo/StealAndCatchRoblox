@@ -1,26 +1,27 @@
 using BehaviorDesigner.Runtime.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveToTargetMob : BotAction
+namespace BotBehavior
 {
-    public override TaskStatus OnUpdate()
+    public class MoveToTargetMob : BotAction
     {
-        if(Bot.CurrentTarget == null)
+        public override TaskStatus OnUpdate()
         {
-            return TaskStatus.Failure;
+            if (Bot.BehaviorTreeData.CurrentTarget == null)
+            {
+                return TaskStatus.Failure;
+            }
+            if (Bot.BehaviorTreeData.CurrentTarget.Owner != null)
+            {
+                return TaskStatus.Failure;
+            }
+            if (Vector3.Distance(Bot.BehaviorTreeData.CurrentTarget.SelfTransform.position, Bot.transform.position) < Bot.BehaviorTreeData.InteractionRange)
+            {
+                return TaskStatus.Success;
+            }
+            Bot.GoTo(Bot.BehaviorTreeData.CurrentTarget.SelfTransform);
+
+            return TaskStatus.Running;
         }
-        if(Bot.CurrentTarget.Owner != null && Bot.CurrentTarget.Owner != Bot)
-        {
-            return TaskStatus.Failure;
-        }
-        if (Vector3.Distance(Bot.CurrentTarget.SelfTransform.position, Bot.transform.position) < Bot.InteractionRange)
-        {
-            return TaskStatus.Success;
-        }
-        Bot.GoTo(Bot.CurrentTarget.SelfTransform);
-        
-        return TaskStatus.Running;
     }
 }

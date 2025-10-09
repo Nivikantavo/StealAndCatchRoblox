@@ -1,14 +1,14 @@
 using BehaviorDesigner.Runtime.Tasks;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class BotCondition : Conditional
+namespace BotBehavior
 {
-    protected BotPlayer Bot;
-
-    public override void OnAwake()
+    public class BotCondition : Conditional
     {
-        Bot = GetComponent<BotPlayer>();
+        protected BotPlayer Bot;
+
+        public override void OnAwake()
+        {
+            Bot = GetComponent<BotPlayer>();
+        }
     }
 }

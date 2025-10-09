@@ -8,20 +8,47 @@ using UnityEngine.UIElements;
 
 public class BotPlayer : Player
 {
-    public Transform LockHouseButton => _botsHouse.LockButtonPosition;
-    public bool EarnedEnough => _botsHouse.IsEarnedaLot();
-    public float InteractionRange => _botInteractor.InteractionRange;
-    public IInteractable StolenMob {  get; private set; }
+    public BehaviorTreeData BehaviorTreeData { get; private set; }
 
-    [SerializeField] private float _findTargetDistance;
+    [SerializeField] private float _findTargetDistance;//вынести в конфиг
     [SerializeField] private NavMeshAgent _agent;
+
     private BotInteractor _botInteractor => Interactor as BotInteractor;
     private BotsHouse _botsHouse => _house as BotsHouse;
-    public IInteractable CurrentTarget { get; private set; }
+
+    protected override void Update()
+    {
+        base.Update();
+        Debug.Log(BehaviorTreeData.Stealer);
+    }
+
+    public override void Initialize(House house)
+    {
+        base.Initialize(house);
+        BehaviorTreeData = new BehaviorTreeData(_botsHouse, _botInteractor.InteractionRange, _botInteractor.InteractionRange);
+    }
+
+    public override void Attack()
+    {
+        if (AttackElapsedTime >= AttackCooldown)
+        {
+            _characterAnimation.SetAttack();
+            var hittenPlayers = _fighter.Attack();
+            foreach (var player in hittenPlayers)
+            {
+                if(player == BehaviorTreeData.Stealer)
+                {
+                    Debug.Log("hitten == Stealer");
+                    OnMobLost(BehaviorTreeData.Stolen);
+                }
+            }
+            AttackElapsedTime = 0;
+        }
+    }
 
     public void ResetTarget()
     {
-        CurrentTarget = null;
+        BehaviorTreeData.CurrentTarget = null;
     }
 
     public void GoTo(Transform target)
@@ -33,9 +60,9 @@ public class BotPlayer : Player
     {
         List<IInteractable> interactables = _botInteractor.FindClosestInteractables(_findTargetDistance);
 
-        var canSteal = interactables.Where(x => x.Owner != null && x.IsGraped == false);
+        var canSteal = interactables.Where(x => x.Owner != null && x.Stealer == null);
 
-        CurrentTarget = GetNearestExpensive(canSteal);
+        BehaviorTreeData.CurrentTarget = GetNearestExpensive(canSteal);
     }
 
     public void ChooseFreeTarget()
@@ -44,14 +71,14 @@ public class BotPlayer : Player
 
         var canBuy = interactables.Where(x => x.Price <= Wallet.Money && x.Owner == null);
 
-        CurrentTarget = GetNearestExpensive(canBuy);
+        BehaviorTreeData.CurrentTarget = GetNearestExpensive(canBuy);
     }
 
     private IInteractable GetNearestExpensive(IEnumerable<IInteractable> interactables)
     {
         if (!interactables.Any())
         {
-            CurrentTarget = null;
+            BehaviorTreeData.CurrentTarget = null;
             return null;
         }
 
@@ -62,23 +89,18 @@ public class BotPlayer : Player
             .FirstOrDefault();
     }
 
-    private bool CanInteract()
-    {
-        return Vector3.Distance(transform.position, CurrentTarget.SelfTransform.position) < _botInteractor.InteractionRange;
-    }
-
     public override void OnMobStolen(IInteractable stolenMob)
     {
-        StolenMob = stolenMob;
-        CurrentTarget = StolenMob;
+        BehaviorTreeData.Stolen = stolenMob;
+        BehaviorTreeData.Stealer = stolenMob.Stealer;
     }
 
     public override void OnMobLost(IInteractable stolenMob)
     {
-        if(StolenMob == stolenMob)
+        if(BehaviorTreeData.Stealer == stolenMob.Stealer)
         {
-            StolenMob = null;
-            CurrentTarget = null;
+            BehaviorTreeData.Stolen = null;
+            BehaviorTreeData.Stealer = null;
         }
     }
 }

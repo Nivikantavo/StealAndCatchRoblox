@@ -35,7 +35,7 @@ public class HouseLocker : MonoBehaviour
         if (IsClosed) return;
         if (player != _owner) return;
 
-        SetClosed(60);
+        SetClosed(10);
     }
 
     private async void SetClosed(float timeInSeconds)

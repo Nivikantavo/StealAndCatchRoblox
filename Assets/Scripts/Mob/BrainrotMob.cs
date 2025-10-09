@@ -11,7 +11,7 @@ public class BrainrotMob : MonoBehaviour, IInteractable
     public GameObject Model => _config.MobPrefab;
     public float Speed => _agent.speed;
     public int Price => Config.BaseCost;
-    public bool IsGraped => _mobStateData.StealerPlayer != null;
+    public IInteractor Stealer => _mobStateData.StealerPlayer;
     public Transform SelfTransform => transform;
     public IInteractor Owner => _mobStateData.Owner;
 
