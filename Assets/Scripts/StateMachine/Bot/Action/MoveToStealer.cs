@@ -15,7 +15,7 @@ namespace BotBehavior
             {
                 return TaskStatus.Success;
             }
-            Bot.GoTo(Bot.BehaviorTreeData.Stealer.SelfTransform);
+            Bot.BehaviorTreeData.BotCharacterController.GoTo(Bot.BehaviorTreeData.Stealer.SelfTransform);
 
             return TaskStatus.Running;
         }

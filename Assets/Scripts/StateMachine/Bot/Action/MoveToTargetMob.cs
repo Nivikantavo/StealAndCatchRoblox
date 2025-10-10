@@ -19,7 +19,7 @@ namespace BotBehavior
             {
                 return TaskStatus.Success;
             }
-            Bot.GoTo(Bot.BehaviorTreeData.CurrentTarget.SelfTransform);
+            Bot.BehaviorTreeData.BotCharacterController.GoTo(Bot.BehaviorTreeData.CurrentTarget.SelfTransform);
 
             return TaskStatus.Running;
         }

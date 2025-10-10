@@ -9,6 +9,18 @@ public class BotsHouse : House
     public Transform OwnerSpawnPosition => _ownerSpawnPosition;
     public Transform LockButtonPosition => Locker.LockButtonPosition;
     public bool HasMobs => Holders.Any(holder => holder.IsFree == false);
+    //public List<Transform> FullCollecters => Holders.Where(holder => holder.Earned == holder.MaxValue).Select(holder=> holder.CollectPosition).ToList();
+    public IEnumerable<Transform> FullCollecters
+    {
+        get
+        {
+            foreach (var holder in Holders)
+            {
+                if (holder.Earned == holder.MaxValue)
+                    yield return holder.CollectPosition;
+            }
+        }
+    }
 
     [SerializeField] private Transform _ownerSpawnPosition;
 
@@ -16,6 +28,7 @@ public class BotsHouse : House
     {
         Owner = owner;
         Owner.Initialize(this);
+        LayerNumber = layer;
         Owner.gameObject.layer = LayerNumber;
         MobCatcher.Initialize(Owner);
         Locker.Initialize(Owner);

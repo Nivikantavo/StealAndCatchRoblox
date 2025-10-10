@@ -1,4 +1,5 @@
 using BehaviorDesigner.Runtime.Tasks;
+using UnityEngine;
 
 namespace BotBehavior
 {
@@ -6,7 +7,7 @@ namespace BotBehavior
     {
         public override void OnStart()
         {
-            Bot.GoTo(Bot.BehaviorTreeData.LockHouseButton);
+            Bot.BehaviorTreeData.BotCharacterController.GoTo(Bot.BehaviorTreeData.LockHouseButton);
         }
 
         public override TaskStatus OnUpdate()

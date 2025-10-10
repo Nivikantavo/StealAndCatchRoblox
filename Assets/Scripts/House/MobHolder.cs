@@ -11,9 +11,11 @@ public class MobHolder : MonoBehaviour
     public bool IsFree => _mob == null;
     public int MaxValue => _mob.Config.MaxEarning;
     public Transform HoldingPosition => _holdingPosition;
+    public Transform CollectPosition => _collectPosition;
     public IInteractor Owner => _owner.Interactor;
 
     [SerializeField] private Transform _holdingPosition;
+    [SerializeField] private Transform _collectPosition;
 
     private Player _owner;
     private int _earned;

@@ -39,7 +39,7 @@ public class PlayerFighter : MonoBehaviour, IFighter
         {
             if(col.TryGetComponent(out IFighter fighter))
             {
-                if(fighter == this)
+                if (fighter == this)
                     continue;
 
                 Vector3 directionToTarget = (col.transform.position - transform.position).normalized;

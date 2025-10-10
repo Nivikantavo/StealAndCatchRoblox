@@ -173,7 +173,7 @@ MonoBehaviour:
   _brakingFriction: 8
   _airFriction: 0
   _airControl: 0.2
-  _canCrouch: 1
+  _canCrouch: 0
   _standingHeight: 2
   _crouchingHeight: 1
   _baseJumpHeight: 1.5
@@ -184,7 +184,6 @@ MonoBehaviour:
   _maxMidAirJumps: 0
   _useRootMotion: 0
   _rootMotionRotation: 0
-  _characterAnimation: {fileID: 2057709161839701008}
 --- !u!95 &1723676341866946881
 Animator:
   serializedVersion: 5
@@ -260,7 +259,7 @@ MonoBehaviour:
   _maxAngle: 60
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32640
 --- !u!1 &7771721100913677953
 GameObject:
   m_ObjectHideFlags: 0

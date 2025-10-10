@@ -15,17 +15,14 @@ public class BotPlayer : Player
 
     private BotInteractor _botInteractor => Interactor as BotInteractor;
     private BotsHouse _botsHouse => _house as BotsHouse;
-
-    protected override void Update()
-    {
-        base.Update();
-        Debug.Log(BehaviorTreeData.Stealer);
-    }
+    private BotCharacterController _botCharacterController;
 
     public override void Initialize(House house)
     {
         base.Initialize(house);
-        BehaviorTreeData = new BehaviorTreeData(_botsHouse, _botInteractor.InteractionRange, _botInteractor.InteractionRange);
+        _botCharacterController = GetComponent<BotCharacterController>();
+        BehaviorTreeData = new BehaviorTreeData(_botsHouse, _botInteractor.InteractionRange, _botInteractor.InteractionRange, _botCharacterController);
+        Debug.Log(BehaviorTreeData.BotCharacterController);
     }
 
     public override void Attack()
@@ -38,7 +35,6 @@ public class BotPlayer : Player
             {
                 if(player == BehaviorTreeData.Stealer)
                 {
-                    Debug.Log("hitten == Stealer");
                     OnMobLost(BehaviorTreeData.Stolen);
                 }
             }
@@ -49,11 +45,6 @@ public class BotPlayer : Player
     public void ResetTarget()
     {
         BehaviorTreeData.CurrentTarget = null;
-    }
-
-    public void GoTo(Transform target)
-    {
-        _agent.SetDestination(target.position);
     }
 
     public void ChooseOwnedTarget()

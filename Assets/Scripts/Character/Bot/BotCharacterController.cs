@@ -1,9 +1,10 @@
+using Cysharp.Threading.Tasks;
 using ECM.Controllers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCharacterController : BaseCharacterController
+public class BotCharacterController : BaseAgentController
 {
     private CharacterAnimation _characterAnimation;
 
@@ -22,5 +23,15 @@ public class PlayerCharacterController : BaseCharacterController
         _characterAnimation.SetIsMoving(moveDirection != Vector3.zero);
         _characterAnimation.SetJumping(isJumping);
         _characterAnimation.SetFalling(isFalling);
+    }
+
+    protected override void HandleInput()
+    {
+        
+    }
+
+    public void GoTo(Transform target)
+    {
+        agent.SetDestination(target.position);
     }
 }

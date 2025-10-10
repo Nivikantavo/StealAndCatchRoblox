@@ -56,7 +56,6 @@ public abstract class Player : MonoBehaviour
 
     public virtual void TakeHit()
     {
-        Debug.Log("Hit " + gameObject.name);
         _mobStealer.LoseMob();
     }
 
