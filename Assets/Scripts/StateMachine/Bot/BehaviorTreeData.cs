@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BehaviorTreeData
 {
+    public Transform TargetPosition { get; set; }
+    public float CurrentRange { get; set; }
+
     public IInteractor Stealer { get; set; }
     public IInteractable CurrentTarget { get; set; }
     public IInteractable Stolen { get; set; }

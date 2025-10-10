@@ -30,8 +30,8 @@ public class BotCharacterController : BaseAgentController
         
     }
 
-    public void GoTo(Transform target)
+    public void GoTo(Vector3 position)
     {
-        agent.SetDestination(target.position);
+        agent.SetDestination(position);
     }
 }

@@ -16,7 +16,6 @@ namespace BotBehavior
 
         public override TaskStatus OnUpdate()
         {
-            for (int i = 0;
 
             return targets.Count == 0 ? TaskStatus.Success : TaskStatus.Running;
         }
