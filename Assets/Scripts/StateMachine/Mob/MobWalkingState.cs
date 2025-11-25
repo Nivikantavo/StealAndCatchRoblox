@@ -22,6 +22,8 @@ public class MobWalkingState : IState
         _interactAction = new PurchasableMob(_mob);
     }
 
+    public bool IsInteractable => true;
+
     public void Enter()
     {
         //Debug.Log($"Enter {GetType()}");

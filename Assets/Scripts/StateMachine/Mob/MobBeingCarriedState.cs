@@ -1,5 +1,7 @@
 public class MobBeingCarriedState : IState
 {
+    public bool IsInteractable => false;
+
     private readonly IStateSwitcher _stateSwitcher;
     private readonly MobStateData _mobStateData;
     private readonly BrainrotMob _mob;

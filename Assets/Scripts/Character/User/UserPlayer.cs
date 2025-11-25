@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class UserPlayer : Player
 {
-    
+    [SerializeField] private Transform _cameraPivot;
+
+    public Transform GetCameraPivot()
+    {
+        return _cameraPivot;
+    }
 
     public override void OnMobLost(IInteractable stolenMob)
     {

@@ -19,6 +19,8 @@ public class MobWorkingState : IState
         _stealAction = new StealableMob(_mobStateData, mob);
     }
 
+    public bool IsInteractable => true;
+
     public void Enter()
     {
         _mob.SetOnHolder();

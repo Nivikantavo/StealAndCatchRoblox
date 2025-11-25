@@ -18,8 +18,9 @@ public class ItemsFeed : MonoBehaviour
     private float _timeBetweenSpawn;
     private bool _isSpawning = false;
 
-    private void Awake() 
+    private async void Start() 
     {
+        await UniTask.Delay(100);
         SpawnStartMobs();
         SendBrainrotMob();
 
@@ -38,7 +39,7 @@ public class ItemsFeed : MonoBehaviour
     {
         int spawnCount = (int)(Vector3.Distance(_startPosition.position, _endPosition.transform.position) / _distanceBetweenAssets);
         int collectionIndex = 0;
-
+        Debug.Log("StartSpawnMobs");
         for (int i = 0; i < spawnCount; i++)
         {
             if (collectionIndex >= _possibleAssets.Count)
@@ -48,9 +49,11 @@ public class ItemsFeed : MonoBehaviour
 
             float lerpd = Mathf.InverseLerp(0, spawnCount, i);
             Vector3 spawnPosition = Vector3.Lerp(_startPosition.position, _endPosition.transform.position, lerpd);
+            
             SpawnMob(spawnPosition, _possibleAssets[collectionIndex]);
             collectionIndex++;
         }
+        Debug.Log("SpawnMobsEnd");
     }
 
     private void SendBrainrotMob()
@@ -108,7 +111,6 @@ public class ItemsFeed : MonoBehaviour
     {
         var spawned = Instantiate(_mobTemplate, _spawnedContainer);
         spawned.transform.position = spawnPosition;
-
         spawned.Initialize(config);
 
         _currentBrainrotAssetsCollection.Add(spawned);

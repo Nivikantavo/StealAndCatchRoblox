@@ -63,11 +63,14 @@ public class PlayerInteractor : MonoBehaviour, IInteractor
         {
             if (hitCollider.TryGetComponent<IInteractable>(out var interactable))
             {
-                float distance = Vector3.Distance(SelfTransform.position, hitCollider.transform.position);
-                if (distance < minDistance)
+                if (interactable.IsInteractable)
                 {
-                    minDistance = distance;
-                    colsestInteractable = interactable;
+                    float distance = Vector3.Distance(SelfTransform.position, hitCollider.transform.position);
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        colsestInteractable = interactable;
+                    }
                 }
             }
         }

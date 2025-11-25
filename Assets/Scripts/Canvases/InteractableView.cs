@@ -37,7 +37,10 @@ public class InteractableView : MonoBehaviour
         var direction = transform.position - Camera.main.transform.position;
         transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
 
-        //transform.LookAt(direction);
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            OnInteractButtonClicked();
+        }
     }
 
     private void OnEnable()

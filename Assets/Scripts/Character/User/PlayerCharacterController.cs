@@ -1,26 +1,32 @@
 using ECM.Controllers;
+using ECM2;
+using ECM2.Examples.ThirdPerson;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCharacterController : BaseCharacterController
+public class PlayerCharacterController : Character
 {
     private CharacterAnimation _characterAnimation;
 
-    public override void Awake()
+    protected override void Awake()
     {
         base.Awake();
         _characterAnimation = GetComponent<CharacterAnimation>();
     }
 
-    protected override void Animate()
+    private void Update()
+    {
+        Animate();
+    }
+
+    protected void Animate()
     {
         if (_characterAnimation == null)
             return;
-        base.Animate();
 
-        _characterAnimation.SetIsMoving(moveDirection != Vector3.zero);
-        _characterAnimation.SetJumping(isJumping);
-        _characterAnimation.SetFalling(isFalling);
+        _characterAnimation.SetIsMoving(GetMovementDirection() != Vector3.zero);
+        _characterAnimation.SetJumping(_isJumping);
+        _characterAnimation.SetFalling(IsFalling());
     }
 }

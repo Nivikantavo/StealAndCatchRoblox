@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class StateMachine : IStateSwitcher
 {
+    public bool IsInteractable => _currentState.IsInteractable;
+
     private List<IState> _states = new List<IState>();
     private IState _currentState;
 

@@ -22,7 +22,7 @@ public class BotPlayer : Player
         base.Initialize(house);
         _botCharacterController = GetComponent<BotCharacterController>();
         BehaviorTreeData = new BehaviorTreeData(_botsHouse, _botInteractor.InteractionRange, _botInteractor.InteractionRange, _botCharacterController);
-        Debug.Log(BehaviorTreeData.BotCharacterController);
+        
     }
 
     public override void Attack()
@@ -30,14 +30,15 @@ public class BotPlayer : Player
         if (AttackElapsedTime >= AttackCooldown)
         {
             _characterAnimation.SetAttack();
-            var hittenPlayers = _fighter.Attack();
+            var hittenPlayers = _fighter.CheckAttackZone();
             foreach (var player in hittenPlayers)
             {
-                if(player == BehaviorTreeData.Stealer)
+                if (ReferenceEquals((player as MonoBehaviour).gameObject, (BehaviorTreeData.Stealer as MonoBehaviour).gameObject))
                 {
                     OnMobLost(BehaviorTreeData.Stolen);
                 }
             }
+            _fighter.Attack();
             AttackElapsedTime = 0;
         }
     }
@@ -93,5 +94,54 @@ public class BotPlayer : Player
             BehaviorTreeData.Stolen = null;
             BehaviorTreeData.Stealer = null;
         }
+    }
+
+    public void FindTargetToSteal()
+    {
+        var openHouse = FindOpenHouses(_findTargetDistance);
+        if(openHouse == null)
+        {
+            throw new System.Exception("hasn't open house in range");
+        }
+
+        BehaviorTreeData.CurrentStealTargetHouse = openHouse;
+
+        Collider[] hitColliders = Physics.OverlapSphere(openHouse.transform.position, _findTargetDistance);
+        List<IInteractable> colsestInteractable = new List<IInteractable>();
+
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.TryGetComponent<IInteractable>(out var interactable))
+            {
+                if (colsestInteractable.Contains(interactable) == false && interactable.Owner != this)
+                {
+                    colsestInteractable.Add(interactable);
+                }
+            }
+        }
+        BehaviorTreeData.CurrentTarget = GetNearestExpensive(colsestInteractable);
+    }
+
+    public House FindOpenHouses(float findDistance)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, findDistance);
+        House closestHouse = null;
+        float minDistance = float.MaxValue;
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.TryGetComponent<House>(out var house))
+            {
+                if (house.IsClosed == false && house.HasMobs)
+                {
+                    float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        closestHouse = house;
+                    }
+                }
+            }
+        }
+        return closestHouse;
     }
 }

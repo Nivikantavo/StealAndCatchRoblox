@@ -14,6 +14,7 @@ public class BrainrotMob : MonoBehaviour, IInteractable
     public IInteractor Stealer => _mobStateData.StealerPlayer;
     public Transform SelfTransform => transform;
     public IInteractor Owner => _mobStateData.Owner;
+    public bool IsInteractable => _stateMachine.IsInteractable;
 
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private MobInfoCanvas _mobInfoCanvas;

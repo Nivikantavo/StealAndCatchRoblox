@@ -6,7 +6,7 @@ public class House : MonoBehaviour
 {
     public bool IsClosed => Locker.IsClosed;
     public bool HasFreeHolder => MobCatcher.HasFreeHolder;
-    
+    public bool HasMobs => MobCatcher.HasMobs;
 
     [SerializeField] protected MobsCatcher MobCatcher;
     [SerializeField] protected HouseLocker Locker;

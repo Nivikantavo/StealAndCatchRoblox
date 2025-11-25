@@ -7,6 +7,7 @@ public interface IInteractable
     public Transform SelfTransform { get; }
     void Interact(IInteractor interactor);
     public IInteractor Owner { get; }
+    public bool IsInteractable { get; }
 }
 
 public interface IInteractor

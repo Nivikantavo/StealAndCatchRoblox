@@ -20,6 +20,8 @@ public class MobGoingOnHolderState : IState
         _saleAction = new SellableMob(_mobStateData, _mob);
     }
 
+    public bool IsInteractable => false;
+
     public void Enter()
     {
         //Debug.Log($"Enter {GetType()}");

@@ -25,7 +25,8 @@ public class BotsInstaller : MonoInstaller
             BotPlayer botPlayer = Container.InstantiatePrefabForComponent<BotPlayer>(_botTemplate, spawnedHouse.OwnerSpawnPosition.position, Quaternion.identity, null);
             spawnedHouse.Initialzie(botPlayer, i + 8);
         }
-
+        
         _navMeshSurface.BuildNavMesh();
+        Debug.Log("BuildNavMesh");
     }
 }

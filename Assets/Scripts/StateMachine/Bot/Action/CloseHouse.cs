@@ -18,21 +18,24 @@ namespace BotBehavior
         public override TaskStatus OnUpdate()
         {
             if(!Bot.BehaviorTreeData.IsHouseClosed && 
-                Vector3.Distance(Bot.BehaviorTreeData.BotCharacterController.transform.position, Bot.BehaviorTreeData.LockHouseButton.position) < 0.1f &&
+                Vector3.Distance(Bot.BehaviorTreeData.BotCharacterController.transform.position, Bot.BehaviorTreeData.LockHouseButton.position) < Bot.BehaviorTreeData.BotCharacterController.agent.stoppingDistance + 0.1f &&
                 _restartAwaiter == null)
             {
                 _restartAwaiter = StartCoroutine(RestartColosening());
             }
-
             return Bot.BehaviorTreeData.IsHouseClosed ? TaskStatus.Success : TaskStatus.Running;
         }
 
         private IEnumerator RestartColosening()
         {
             yield return new WaitForSeconds(_waitingTime);
-            Bot.BehaviorTreeData.BotCharacterController.GoTo(Bot.BehaviorTreeData.LockHouseButton.position + Vector3.left * 5);
-            yield return new WaitForSeconds(_waitingTime);
-            Bot.BehaviorTreeData.BotCharacterController.GoTo(Bot.BehaviorTreeData.LockHouseButton.position);
+            if (!Bot.BehaviorTreeData.IsHouseClosed)
+            {
+                yield return new WaitForSeconds(_waitingTime);
+                Bot.BehaviorTreeData.BotCharacterController.GoTo(Bot.BehaviorTreeData.LockHouseButton.position + Vector3.left * 5);
+                yield return new WaitForSeconds(_waitingTime);
+                Bot.BehaviorTreeData.BotCharacterController.GoTo(Bot.BehaviorTreeData.LockHouseButton.position);
+            }
         }
     }
 }

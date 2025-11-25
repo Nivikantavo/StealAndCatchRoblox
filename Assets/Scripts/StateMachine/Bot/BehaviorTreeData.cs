@@ -9,6 +9,7 @@ public class BehaviorTreeData
 
     public IInteractor Stealer { get; set; }
     public IInteractable CurrentTarget { get; set; }
+    public House CurrentStealTargetHouse { get; set; }
     public IInteractable Stolen { get; set; }
     public IEnumerable<Transform> FullCollecters => _botsHouse.FullCollecters;
     public BotCharacterController BotCharacterController => _botCharacterController;

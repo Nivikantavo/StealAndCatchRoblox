@@ -7,7 +7,7 @@ using UnityEngine;
 public class MobsCatcher : MonoBehaviour
 {
     public bool HasFreeHolder => _mobHolders.Exists(holder => holder.IsFree);
-
+    public bool HasMobs => _mobHolders.Exists(holder => holder.IsFree == false);
     [SerializeField] private List<MobHolder> _mobHolders;
 
     public void Initialize(Player owner)
