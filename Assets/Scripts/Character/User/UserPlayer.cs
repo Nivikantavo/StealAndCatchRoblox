@@ -5,6 +5,9 @@ using UnityEngine;
 public class UserPlayer : Player
 {
     [SerializeField] private Transform _cameraPivot;
+    [SerializeField] private PlayerCharacterController _characterController;
+    [SerializeField] private float _defaultSpeed;
+    [SerializeField] private float _carringSpeed;
 
     public Transform GetCameraPivot()
     {
@@ -14,12 +17,25 @@ public class UserPlayer : Player
     public override void OnMobLost(IInteractable stolenMob)
     {
         //Сообщить игроку о том что у него воруют
-        Debug.Log("У тебя воруют!");
+
     }
 
     public override void OnMobStolen(IInteractable stolenMob)
     {
-        Debug.Log("Опаздал");
+
+    }
+
+    public override void TakeKnokout()
+    {
+        _characterController.Pause(true);
+        StartCoroutine(Stunned());
+    }
+
+    private IEnumerator Stunned()
+    {
+        yield return new WaitForSeconds(3);
+        _characterController.Pause(false);
+        _characterAnimation.SetIsKnoked(false);
     }
 
     protected override void Update()
@@ -29,5 +45,15 @@ public class UserPlayer : Player
         {
             Attack();
         }
+    }
+
+    public override void OnMobTaken()
+    {
+        _characterController.maxWalkSpeed = _carringSpeed;
+    }
+
+    public override void OnMobReleased()
+    {
+        _characterController.maxWalkSpeed = _defaultSpeed;
     }
 }

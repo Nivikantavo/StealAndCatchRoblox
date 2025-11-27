@@ -7,6 +7,18 @@ namespace BotBehavior
         public override void OnStart()
         {
             Bot.ChooseFreeTarget();
+            Bot.BehaviorTreeData.AvailabilityCondition = () =>
+            {
+                if (Bot.BehaviorTreeData.CurrentTarget != null)
+                {
+                    if(Bot.BehaviorTreeData.CurrentTarget.Owner != null)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+                    
+            };
             if (Bot.BehaviorTreeData.CurrentTarget != null && Bot.BehaviorTreeData.CurrentTarget.Owner == null)
             {
                 Bot.BehaviorTreeData.TargetPosition = Bot.BehaviorTreeData.CurrentTarget.SelfTransform;

@@ -14,7 +14,7 @@ public class Patrolling : BotAction
 
     public override TaskStatus OnUpdate()
     {
-        if (Vector3.Distance(Bot.transform.position, _targetPoint) > Bot.BehaviorTreeData.BotCharacterController.agent.stoppingDistance + 0.1f)
+        if (Vector3.Distance(Bot.transform.position, _targetPoint) > Bot.BehaviorTreeData.CurrentRange)
         {
             return TaskStatus.Running;
         }

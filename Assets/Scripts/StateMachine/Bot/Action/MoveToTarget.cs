@@ -7,6 +7,11 @@ namespace BotBehavior
     {
         public override TaskStatus OnUpdate()
         {
+            if(Bot.BehaviorTreeData.IsTargetAvailable == false)
+            {
+                return TaskStatus.Failure;
+            }
+
             if (Vector3.Distance(Bot.BehaviorTreeData.TargetPosition.position, Bot.transform.position) < Bot.BehaviorTreeData.CurrentRange)
             {
                 return TaskStatus.Success;

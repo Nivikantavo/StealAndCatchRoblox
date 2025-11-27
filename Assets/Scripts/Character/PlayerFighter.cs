@@ -37,7 +37,7 @@ public class PlayerFighter : MonoBehaviour, IFighter
 
         foreach (Collider col in allColliders)
         {
-            if(col.TryGetComponent(out IFighter fighter))
+            if (col.TryGetComponent(out IFighter fighter))
             {
                 if (fighter == this)
                     continue;

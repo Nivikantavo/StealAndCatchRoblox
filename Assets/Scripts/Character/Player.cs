@@ -42,6 +42,9 @@ public abstract class Player : MonoBehaviour
         _mobStealer.Initialize(_interactor);
         _fighter.Initialize(this);
         _wallet = new Wallet(1000);
+
+        Stealer.MobWasTaken += OnMobTaken;
+        Stealer.MobWasReleased += OnMobReleased;
     }
 
     public virtual void Attack()
@@ -57,8 +60,13 @@ public abstract class Player : MonoBehaviour
     public virtual void TakeHit()
     {
         _mobStealer.LoseMob();
+        _characterAnimation.SetIsKnoked(true);
+        TakeKnokout();
     }
 
+    public abstract void OnMobTaken();
+    public abstract void OnMobReleased();
+    public abstract void TakeKnokout();
     public abstract void OnMobStolen(IInteractable stolenMob);
     public abstract void OnMobLost(IInteractable stolenMob);
 }

@@ -6,16 +6,16 @@ namespace BotBehavior
     {
         public override void OnStart()
         {
-            if(Bot.BehaviorTreeData.Stealer != null)
+            if(Bot.BehaviorTreeData.StealerFromMe != null)
             {
-                Bot.BehaviorTreeData.TargetPosition = Bot.BehaviorTreeData.Stealer.SelfTransform;
+                Bot.BehaviorTreeData.TargetPosition = Bot.BehaviorTreeData.StealerFromMe.SelfTransform;
                 Bot.BehaviorTreeData.CurrentRange = Bot.BehaviorTreeData.AttackRange;
             }
         }
 
         public override TaskStatus OnUpdate()
         {
-            return Bot.BehaviorTreeData.Stealer == null ? TaskStatus.Failure : TaskStatus.Success;
+            return Bot.BehaviorTreeData.StealerFromMe == null ? TaskStatus.Failure : TaskStatus.Success;
         }
     }
 }

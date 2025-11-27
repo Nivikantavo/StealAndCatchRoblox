@@ -1,4 +1,3 @@
-
 using BehaviorDesigner.Runtime.Tasks;
 
 namespace BotBehavior
@@ -12,7 +11,7 @@ namespace BotBehavior
 
         public override TaskStatus OnUpdate()
         {
-            return Bot.BehaviorTreeData.Stealer == null ? TaskStatus.Failure : TaskStatus.Success;
+            return Bot.BehaviorTreeData.StealerFromMe == null ? TaskStatus.Failure : TaskStatus.Success;
         }
     }
 }

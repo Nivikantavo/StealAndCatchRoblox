@@ -2566,6 +2566,8 @@ GameObject:
   - component: {fileID: 6369747885704406799}
   - component: {fileID: 3055763762252317811}
   - component: {fileID: 6251584418024020730}
+  - component: {fileID: 5285792868674489523}
+  - component: {fileID: 8732122397060268414}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -2611,6 +2613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lockButton: {fileID: 6912293460259505657}
   _lock: {fileID: 5057081676750109986}
+  _lockTime: 10
 --- !u!114 &3055763762252317811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2653,6 +2656,54 @@ MonoBehaviour:
   - {fileID: 4017196841076433307}
   - {fileID: 7709201397746367315}
   SecuritySystem: {fileID: 3055763762252317811}
+--- !u!65 &5285792868674489523
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319887945653199234}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8732122397060268414
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319887945653199234}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2351208973357792273
 GameObject:
   m_ObjectHideFlags: 0
@@ -4479,7 +4530,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1991384961527924871
 Transform:

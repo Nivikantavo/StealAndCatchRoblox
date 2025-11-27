@@ -9,6 +9,34 @@ public class ChooseMobForSteal : BotAction
     public override void OnStart()
     {
         Bot.FindTargetToSteal();
+
+        Bot.BehaviorTreeData.AvailabilityCondition = () =>
+        {
+            if (Bot.BehaviorTreeData.CurrentTarget == null)
+            {
+                return false;
+            }
+
+            if (Bot.BehaviorTreeData.CurrentTarget.Owner == null)
+            {
+                return false;
+            }
+
+            if (Bot.BehaviorTreeData.CurrentTarget.Stealer != null)
+            {
+                if (Bot.BehaviorTreeData.CurrentTarget.Stealer != Bot.Interactor)
+                {
+                    return false;
+                }
+            }
+            if (Bot.BehaviorTreeData.CurrentStealTargetHouse.IsClosed)
+            {
+                return false;
+            }
+
+            return true;
+        };
+
         if (Bot.BehaviorTreeData.CurrentTarget != null && Bot.BehaviorTreeData.CurrentTarget.Stealer == null)
         {
             Bot.BehaviorTreeData.TargetPosition = Bot.BehaviorTreeData.CurrentTarget.SelfTransform;
@@ -23,9 +51,17 @@ public class ChooseMobForSteal : BotAction
             return TaskStatus.Failure;
         }
 
-        if (Bot.BehaviorTreeData.CurrentTarget.Owner == null || Bot.BehaviorTreeData.CurrentTarget.Stealer != null)
+        if (Bot.BehaviorTreeData.CurrentTarget.Owner == null)
         {
             return TaskStatus.Failure;
+        }
+
+        if (Bot.BehaviorTreeData.CurrentTarget.Stealer != null)
+        {
+            if(Bot.BehaviorTreeData.CurrentTarget.Stealer != Bot.Interactor)
+            {
+                return TaskStatus.Failure;
+            }
         }
         return TaskStatus.Success;
     }

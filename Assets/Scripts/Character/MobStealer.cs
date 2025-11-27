@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,9 @@ public class MobStealer : MonoBehaviour, IStealer
 
     private BrainrotMob _stolenMob;
     private IInteractor _interactor;
+
+    public event Action MobWasTaken;
+    public event Action MobWasReleased;
 
     public void Initialize(IInteractor interactor)
     {
@@ -24,6 +28,7 @@ public class MobStealer : MonoBehaviour, IStealer
         mob.transform.position = _carryPoint.position;
         mob.transform.rotation = _carryPoint.rotation;
         mob.transform.SetParent(_carryPoint);
+        MobWasTaken?.Invoke();
     }
 
     public void LoseMob()
@@ -32,6 +37,7 @@ public class MobStealer : MonoBehaviour, IStealer
         {
             _stolenMob.Drop();
             _stolenMob = null;
+            MobWasReleased?.Invoke();
         }
     }
 }

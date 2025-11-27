@@ -272,6 +272,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraPivot: {fileID: 4637654860610668983}
+  _characterController: {fileID: 7405376842006704492}
+  _defaultSpeed: 7
+  _carringSpeed: 5.5
 --- !u!114 &8997038217114610385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f61d7a1466248b41aa27ae5a6361cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxDistance: 3
+  _maxDistance: 3.5
   _maxAngle: 60
   _targetLayer:
     serializedVersion: 2

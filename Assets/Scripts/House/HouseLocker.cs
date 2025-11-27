@@ -10,6 +10,7 @@ public class HouseLocker : MonoBehaviour
 
     [SerializeField] private HouseLockerButton _lockButton;
     [SerializeField] private GameObject _lock;
+    [SerializeField] private float _lockTime = 10;
 
     private Player _owner;
 
@@ -35,7 +36,7 @@ public class HouseLocker : MonoBehaviour
         if (IsClosed) return;
         if (player != _owner) return;
 
-        SetClosed(10);
+        SetClosed(_lockTime);
     }
 
     private async void SetClosed(float timeInSeconds)

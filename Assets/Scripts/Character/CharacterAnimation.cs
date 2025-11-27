@@ -8,6 +8,7 @@ public class CharacterAnimation : MonoBehaviour
     private const string IsJumping = "IsJumping";
     private const string IsFalling = "IsFalling";
     private const string Attack = "Attack";
+    private const string IsKnoked = "IsKnoked";
 
     [SerializeField] private Animator _animator;
 
@@ -29,5 +30,10 @@ public class CharacterAnimation : MonoBehaviour
     public void SetAttack()
     {
         _animator.SetTrigger(Attack);
+    }
+
+    public void SetIsKnoked(bool isKnoked)
+    {
+        _animator.SetBool(IsKnoked, isKnoked);
     }
 }

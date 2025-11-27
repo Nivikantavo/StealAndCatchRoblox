@@ -9,9 +9,10 @@ using UnityEngine.UIElements;
 public class BotPlayer : Player
 {
     public BehaviorTreeData BehaviorTreeData { get; private set; }
-
-    [SerializeField] private float _findTargetDistance;//вынести в конфиг
-    [SerializeField] private NavMeshAgent _agent;
+    //вынести в конфиг
+    [SerializeField] private float _findTargetDistance;
+    [SerializeField] private float _defaultSpeed;
+    [SerializeField] private float _carringSpeed;
 
     private BotInteractor _botInteractor => Interactor as BotInteractor;
     private BotsHouse _botsHouse => _house as BotsHouse;
@@ -33,9 +34,9 @@ public class BotPlayer : Player
             var hittenPlayers = _fighter.CheckAttackZone();
             foreach (var player in hittenPlayers)
             {
-                if (ReferenceEquals((player as MonoBehaviour).gameObject, (BehaviorTreeData.Stealer as MonoBehaviour).gameObject))
+                if (ReferenceEquals((player as MonoBehaviour).gameObject, (BehaviorTreeData.StealerFromMe as MonoBehaviour).gameObject))
                 {
-                    OnMobLost(BehaviorTreeData.Stolen);
+                    OnMobLost(BehaviorTreeData.StolenFromMe);
                 }
             }
             _fighter.Attack();
@@ -83,22 +84,35 @@ public class BotPlayer : Player
 
     public override void OnMobStolen(IInteractable stolenMob)
     {
-        BehaviorTreeData.Stolen = stolenMob;
-        BehaviorTreeData.Stealer = stolenMob.Stealer;
+        BehaviorTreeData.StolenFromMe = stolenMob;
+        BehaviorTreeData.StealerFromMe = stolenMob.Stealer;
     }
 
     public override void OnMobLost(IInteractable stolenMob)
     {
-        if(BehaviorTreeData.Stealer == stolenMob.Stealer)
+        if(BehaviorTreeData.StealerFromMe == stolenMob.Stealer)
         {
-            BehaviorTreeData.Stolen = null;
-            BehaviorTreeData.Stealer = null;
+            BehaviorTreeData.StolenFromMe = null;
+            BehaviorTreeData.StealerFromMe = null;
         }
+    }
+
+    public override void TakeKnokout()
+    {
+        _botCharacterController.pause = true;
+        StartCoroutine(Stunned());
+    }
+
+    private IEnumerator Stunned()
+    {
+        yield return new WaitForSeconds(5);
+        _botCharacterController.pause = false;
+        _characterAnimation.SetIsKnoked(false);
     }
 
     public void FindTargetToSteal()
     {
-        var openHouse = FindOpenHouses(_findTargetDistance);
+        var openHouse = FindOpenHouses(_findTargetDistance * 5);
         if(openHouse == null)
         {
             throw new System.Exception("hasn't open house in range");
@@ -143,5 +157,15 @@ public class BotPlayer : Player
             }
         }
         return closestHouse;
+    }
+
+    public override void OnMobTaken()
+    {
+        _botCharacterController.speed = _carringSpeed;
+    }
+
+    public override void OnMobReleased()
+    {
+        _botCharacterController.speed = _defaultSpeed;
     }
 }

@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class SellableMob : InteractAction
 {
     private IInteractor _owner => _mobStateData.Owner;
@@ -28,6 +23,7 @@ public class SellableMob : InteractAction
     private void SellMob()
     {
         _owner.Wallet.AddMoney(_mob.Config.BaseCost);
+        _mobStateData.CurrentHolder.ClearMob();
         _mob.gameObject.SetActive(false);
     }
 }

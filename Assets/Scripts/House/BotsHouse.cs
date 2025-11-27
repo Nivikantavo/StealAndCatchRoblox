@@ -8,7 +8,6 @@ public class BotsHouse : House
 {
     public Transform OwnerSpawnPosition => _ownerSpawnPosition;
     public Transform LockButtonPosition => Locker.LockButtonPosition;
-    public bool HasMobs => Holders.Any(holder => holder.IsFree == false);
     //public List<Transform> FullCollecters => Holders.Where(holder => holder.Earned == holder.MaxValue).Select(holder=> holder.CollectPosition).ToList();
     public IEnumerable<Transform> FullCollecters
     {
@@ -16,11 +15,15 @@ public class BotsHouse : House
         {
             foreach (var holder in Holders)
             {
+                if(holder.IsFree || holder.Earned == 0)
+                    continue;
                 if (holder.Earned == holder.MaxValue)
                     yield return holder.CollectPosition;
             }
         }
     }
+
+    public IInteractable CheapestMob => Holders.FirstOrDefault(mob => mob.MaxValue == Holders.Max(holder => holder.MaxValue)).Mob;
 
     [SerializeField] private Transform _ownerSpawnPosition;
 

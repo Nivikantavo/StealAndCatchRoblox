@@ -14,6 +14,7 @@ namespace BotBehavior
             if (Bot.BehaviorTreeData.CurrentTarget.Owner == Bot.Interactor)
             {
                 Bot.ResetTarget();
+                Bot.BehaviorTreeData.AvailabilityCondition = null;
                 return TaskStatus.Success;
             }
             return TaskStatus.Failure;

@@ -13,6 +13,7 @@ public class MobHolder : MonoBehaviour
     public Transform HoldingPosition => _holdingPosition;
     public Transform CollectPosition => _collectPosition;
     public IInteractor Owner => _owner.Interactor;
+    public IInteractable Mob => _mob;
 
     [SerializeField] private Transform _holdingPosition;
     [SerializeField] private Transform _collectPosition;
