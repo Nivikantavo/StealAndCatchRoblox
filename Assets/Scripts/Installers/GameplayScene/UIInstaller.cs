@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 public class UIInstaller : MonoInstaller
 {
     [SerializeField] private MissionTrackerPanel _missionTrackerPanel;
-    [SerializeField] private Canvas _canvas;
+    [SerializeField] private GamePlayCanvas _canvas;
 
     public override void InstallBindings()
     {
@@ -16,7 +17,9 @@ public class UIInstaller : MonoInstaller
 
     private void BindMissionTrackerPanel()
     {
-        var spawnedTrackerPanel = Container.Bind<MissionTrackerPanel>().FromComponentInNewPrefab(_missionTrackerPanel).NonLazy();
-        //var spawnedTrackerPanel = Container.InstantiatePrefabForComponent<MissionTrackerPanel>(_missionTrackerPanel, _canvas.transform);
+        var spawnedTrackerPanel = Container.InstantiatePrefabForComponent<MissionTrackerPanel>(_missionTrackerPanel, _canvas.transform);
+        Container.Bind<MissionTrackerPanel>().FromInstance(spawnedTrackerPanel).NonLazy();
     }
+
+    
 }

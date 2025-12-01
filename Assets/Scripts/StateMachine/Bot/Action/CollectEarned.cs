@@ -20,7 +20,6 @@ namespace BotBehavior
 
         public override TaskStatus OnUpdate()
         {
-            Debug.Log(_currentTargetIndex);
             if (Vector3.Distance(Bot.transform.position, _targets[_currentOnWayIndex].position) < 1f)
             {
                 _currentTargetIndex++;

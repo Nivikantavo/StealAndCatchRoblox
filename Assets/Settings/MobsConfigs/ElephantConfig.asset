@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61466c07cdb96f24b9dea6dd5961f87f, type: 3}
   m_Name: ElephantConfig
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
+  <Name>k__BackingField: Liliri Lalira
+  <Rarity>k__BackingField: 0
+  <Preview>k__BackingField: {fileID: 21300000, guid: 905bee893a91cb947b026d0bed17019b,
+    type: 3}
   <BaseCost>k__BackingField: 100
   <ValuePerSecond>k__BackingField: 10
   <MobPrefab>k__BackingField: {fileID: 6062579842634733250, guid: f96c44769fd15f843adc26a5d9748370,

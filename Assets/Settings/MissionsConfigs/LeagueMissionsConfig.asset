@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f934b92413e5bc40a350bf43ed7e419, type: 3}
+  m_Name: LeagueMissionsConfig
+  m_EditorClassIdentifier: 
+  _leagueMissions:
+  - <League>k__BackingField: 0
+    MoneyMission:
+      Complited: 0
+      <MoneyValueMission>k__BackingField: 1000
+    <MobMissions>k__BackingField:
+    - Complited: 1
+      <TargetMob>k__BackingField: {fileID: 11400000, guid: 4c18bf46607090e42b66b82d348d1ba6,
+        type: 2}
+    - Complited: 1
+      <TargetMob>k__BackingField: {fileID: 11400000, guid: 0e17c5f2b1447084f82b0390411b826e,
+        type: 2}
+  - <League>k__BackingField: 1
+    MoneyMission:
+      Complited: 0
+      <MoneyValueMission>k__BackingField: 2000
+    <MobMissions>k__BackingField:
+    - Complited: 0
+      <TargetMob>k__BackingField: {fileID: 11400000, guid: adf99b09617151d44b1a0d20877ad7d6,
+        type: 2}
+    - Complited: 0
+      <TargetMob>k__BackingField: {fileID: 11400000, guid: 7ba9611a8cb34ef46bcc79dee060c351,
+        type: 2}
+    - Complited: 0
+      <TargetMob>k__BackingField: {fileID: 11400000, guid: 03585db6f1baf4a4bafe8460fd88123c,
+        type: 2}
+  - <League>k__BackingField: 2
+    MoneyMission:
+      Complited: 0
+      <MoneyValueMission>k__BackingField: 0
+    <MobMissions>k__BackingField: []
+  - <League>k__BackingField: 3
+    MoneyMission:
+      Complited: 0
+      <MoneyValueMission>k__BackingField: 0
+    <MobMissions>k__BackingField: []
+  - <League>k__BackingField: 4
+    MoneyMission:
+      Complited: 0
+      <MoneyValueMission>k__BackingField: 0
+    <MobMissions>k__BackingField: []

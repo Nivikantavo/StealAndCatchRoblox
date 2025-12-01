@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +7,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class MobsCatcher : MonoBehaviour
 {
+    public event Action<BrainrotMob> MobAdded;
     public bool HasFreeHolder => _mobHolders.Exists(holder => holder.IsFree);
     public bool HasMobs => _mobHolders.Exists(holder => holder.IsFree == false);
+
     [SerializeField] private List<MobHolder> _mobHolders;
 
     public void Initialize(Player owner)
@@ -46,7 +49,11 @@ public class MobsCatcher : MonoBehaviour
                 mob.Drop();
                 holder.SetMob(mob);
             }
+            else
+            {
+                return;
+            }
         }
-
+        MobAdded?.Invoke(mob);
     }
 }

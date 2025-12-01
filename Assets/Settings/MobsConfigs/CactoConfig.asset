@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61466c07cdb96f24b9dea6dd5961f87f, type: 3}
   m_Name: CactoConfig
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
+  <Name>k__BackingField: Cacto
+  <Rarity>k__BackingField: 0
+  <Preview>k__BackingField: {fileID: 21300000, guid: 66c88aaab7b687944a2c84b686e915f6,
+    type: 3}
   <BaseCost>k__BackingField: 100
   <ValuePerSecond>k__BackingField: 10
   <MobPrefab>k__BackingField: {fileID: 3957201677065758098, guid: 8a7a6ae1d5c7c264a8eb54a939dc7b93,

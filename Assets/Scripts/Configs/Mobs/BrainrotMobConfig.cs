@@ -6,6 +6,8 @@ using UnityEngine;
 public class BrainrotMobConfig : ScriptableObject
 {
     [field: SerializeField] public string Name { get; private set; }
+    [field: SerializeField] public MobRarity Rarity { get; private set; }
+    [field: SerializeField] public Sprite Preview { get; private set; }
     [field: SerializeField] public int BaseCost { get; private set; }
     [field: SerializeField] public int ValuePerSecond { get; private set; }
     [field: SerializeField] public GameObject MobPrefab { get; private set; }

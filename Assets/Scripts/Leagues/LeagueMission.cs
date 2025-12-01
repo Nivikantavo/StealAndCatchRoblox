@@ -3,16 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LeagueMission", menuName = "Configs/Mission/LeagueMission")]
-public class LeagueMission : ScriptableObject
+[Serializable]
+public class LeagueMission
 {
-    [SerializeField] private int _moneyValueMission;
-    [SerializeField] private List<MissionTargetMob> _missionTargets;
+    [field: SerializeField] public League League { get; private set; }
+    [field: SerializeField] public MoneyMission MoneyMission;
+    [field: SerializeField] public List<MobMission> MobMissions { get; private set; }
 }
 
 [Serializable]
-public class MissionTargetMob
+public class Mission
 {
-    public Sprite TargetPreview;
-    public BrainrotMobConfig BrainrotMobConfig;
+    [HideInInspector] public bool Complited;
+}
+
+[Serializable]
+public class MoneyMission : Mission
+{
+    [field: SerializeField] public int MoneyValueMission { get; private set; }
+}
+
+[Serializable]
+public class MobMission : Mission
+{
+    [field: SerializeField] public BrainrotMobConfig TargetMob { get; private set; }
 }

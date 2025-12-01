@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class UserData
 {
     public string UserName;
@@ -9,6 +5,6 @@ public class UserData
 
     public UserData()
     {
-        CurrentLeague = League.Bronze1;
+        CurrentLeague = League.Bronze5;
     }
 }

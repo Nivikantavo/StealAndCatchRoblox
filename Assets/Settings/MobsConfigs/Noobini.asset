@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61466c07cdb96f24b9dea6dd5961f87f, type: 3}
   m_Name: Noobini
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
+  <Name>k__BackingField: Noobini Pizzanini
+  <Rarity>k__BackingField: 0
+  <Preview>k__BackingField: {fileID: 21300000, guid: b999551a167405a428378347c3d17359,
+    type: 3}
   <BaseCost>k__BackingField: 100
   <ValuePerSecond>k__BackingField: 10
   <MobPrefab>k__BackingField: {fileID: 5333305257004749487, guid: 24375be6c53c74c78b1d567df1b44014,
