@@ -1,0 +1,5 @@
+1. Загрузить модельку на mixamo (https://www.mixamo.com) выгрузить модельку with skin
+2. Скачать нужные анимации without skin с применением этой модели (FBX for unity!!!)
+3. Настроить модельку на rig -> humanoid -> create from this model -> apply (при необходимости Configure)
+4. в скачанных анимациях настроить rig -> humanoid -> Copy from other avatar, выбрать аватар модели
+5. клонировать базовый animator controller, вставить новые анимации
