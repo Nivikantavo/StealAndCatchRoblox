@@ -1,0 +1,28 @@
+newmtl Handle1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Nivikantavo_Tex1.png
+map_Kd Nivikantavo_Tex1.png
+map_d Nivikantavo_Tex1.png
+
+newmtl Player1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Nivikantavo_Tex2.png
+map_Kd Nivikantavo_Tex2.png
+map_d Nivikantavo_Tex2.png
+

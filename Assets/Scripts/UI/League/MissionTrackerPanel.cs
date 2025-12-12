@@ -18,13 +18,12 @@ public class MissionTrackerPanel : MonoBehaviour
     [SerializeField] private Button _nextLeagueTransferButton;
 
     private List<MissionTargetMobView> _targetMobViews = new List<MissionTargetMobView>();
-    private string _moneyProgressTextFormat;
+    private string _moneyProgressTextFormat  = "Money: {0}/{1}";
     private int _targetMoneyValue;
 
     private void Awake()
     {
         _nextLeagueTransferButton.onClick.AddListener(OnNextLeagueTransferButtonClicked);
-        _moneyProgressTextFormat = _moneyMissionProgressText.text;
     }
 
     private void OnDestroy()
@@ -32,11 +31,13 @@ public class MissionTrackerPanel : MonoBehaviour
         _nextLeagueTransferButton.onClick.RemoveListener(OnNextLeagueTransferButtonClicked);
     }
 
-    public void Initialize(int targetMoneyValue, List<MobMission> targetMobs)
+    public void Initialize(int targetMoneyValue, List<MobMission> targetMobs, int currentValue = 0)
     {
         _targetMoneyValue = targetMoneyValue;
         _moneyMissionProgressView.maxValue = targetMoneyValue;
         _moneyMissionProgressView.value = 0;
+
+        SetMoneyValue(currentValue);
 
         for (int i = 0; i < targetMobs.Count; i++)
         {

@@ -1,5 +1,9 @@
 1. Загрузить модельку на mixamo (https://www.mixamo.com) выгрузить модельку with skin
-2. Скачать нужные анимации without skin с применением этой модели (FBX for unity!!!)
+2. Скачать нужные анимации with skin с применением этой модели (FBX for unity!!!)
 3. Настроить модельку на rig -> humanoid -> create from this model -> apply (при необходимости Configure)
 4. в скачанных анимациях настроить rig -> humanoid -> Copy from other avatar, выбрать аватар модели
-5. клонировать базовый animator controller, вставить новые анимации
+5. в файлах анимации выбрать объект анимации нажать ctrl+d, удалить изначальный файл, работать с дублированным
+6. клонировать базовый animator controller, вставить новые анимации
+7. в анимации koncked out проверить y позицию при ноке, при необходмости поставить галочку у пункта bake into pose (y)
+
+PS: Скачать аватары игроков можно на https://rblxchar-frontend.vercel.app/

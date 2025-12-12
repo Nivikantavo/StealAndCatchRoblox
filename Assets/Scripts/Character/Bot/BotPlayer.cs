@@ -115,7 +115,7 @@ public class BotPlayer : Player
         var openHouse = FindOpenHouses(_findTargetDistance * 5);
         if(openHouse == null)
         {
-            throw new System.Exception("hasn't open house in range");
+            return;
         }
 
         BehaviorTreeData.CurrentStealTargetHouse = openHouse;

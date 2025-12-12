@@ -12,7 +12,7 @@ public class ChooseMobForSteal : BotAction
 
         Bot.BehaviorTreeData.AvailabilityCondition = () =>
         {
-            if (Bot.BehaviorTreeData.CurrentTarget == null)
+            if (Bot.BehaviorTreeData.CurrentTarget == null || Bot.BehaviorTreeData.CurrentStealTargetHouse == null)
             {
                 return false;
             }

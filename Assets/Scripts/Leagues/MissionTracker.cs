@@ -67,6 +67,6 @@ public class MissionTracker : MonoBehaviour
     {
         _userData.CurrentLeague++;
         _currentMission = _config.GetMission(_userData.CurrentLeague);
-        _missionTrackerPanel.Initialize(_currentMission.MoneyMission.MoneyValueMission, _currentMission.MobMissions);
+        _missionTrackerPanel.Initialize(_currentMission.MoneyMission.MoneyValueMission, _currentMission.MobMissions, _player.Wallet.Money);
     }
 }
