@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 public class ItemsFeed : MonoBehaviour
 {
@@ -10,57 +11,72 @@ public class ItemsFeed : MonoBehaviour
     [SerializeField] ItemsFeedEndPoint _endPosition;
     [SerializeField] List<BrainrotMobConfig> _possibleAssets;
     [SerializeField] float _distanceBetweenAssets;
-    [SerializeField] private Transform _spawnedContainer;
-    [SerializeField] private BrainrotMob _mobTemplate;
+    [SerializeField] float _timeBetweenSpawn;
 
-    private List<BrainrotMob> _currentBrainrotAssetsCollection = new List<BrainrotMob>();
+    private MobFactory _mobFactory;
 
-    private float _timeBetweenSpawn;
     private bool _isSpawning = false;
+
+    [Inject]
+    private void Construct(MobFactory mobFactory)
+    {
+        _mobFactory = mobFactory;
+    }
 
     private async void Start() 
     {
         await UniTask.Delay(100);
-        SpawnStartMobs();
-        SendBrainrotMob();
+        
+        StartSpawning();
+    }
 
-        _timeBetweenSpawn = _distanceBetweenAssets / _mobTemplate.Speed;
-        _isSpawning = true;
-
+    public void Restart()
+    {
+        foreach (var mob in _mobFactory.SpawnedMobCollection)
+        {
+            mob.gameObject.SetActive(false);
+        }
         StartSpawning();
     }
 
     private async void StartSpawning()
     {
+        SpawnStartMobs();
+        SendBrainrotMob();
+
+        _isSpawning = true;
+
         await SpawnOnCooldown();
     }
 
     private void SpawnStartMobs()
     {
         int spawnCount = (int)(Vector3.Distance(_startPosition.position, _endPosition.transform.position) / _distanceBetweenAssets);
+
         int collectionIndex = 0;
-        Debug.Log("StartSpawnMobs");
+
         for (int i = 0; i < spawnCount; i++)
         {
-            if (collectionIndex >= _possibleAssets.Count)
+            if (collectionIndex >= _mobFactory.MobsTypeCount)
             {
                 collectionIndex = 0;
             }
 
             float lerpd = Mathf.InverseLerp(0, spawnCount, i);
             Vector3 spawnPosition = Vector3.Lerp(_startPosition.position, _endPosition.transform.position, lerpd);
-            
-            SpawnMob(spawnPosition, _possibleAssets[collectionIndex]);
+
+            var spawned = _mobFactory.GetMob(_possibleAssets[collectionIndex]);
+            spawned.transform.position = spawnPosition;
+            spawned.gameObject.SetActive(true);
             collectionIndex++;
         }
-        Debug.Log("SpawnMobsEnd");
     }
 
     private void SendBrainrotMob()
     {
-        for (int i = 0; i < _currentBrainrotAssetsCollection.Count; i++)
+        for (int i = 0; i < _mobFactory.SpawnedMobCollection.Count; i++)
         {
-            _currentBrainrotAssetsCollection[i].SetDestanation(_endPosition.transform.position);
+            _mobFactory.SpawnedMobCollection[i].SetDestanation(_endPosition.transform.position);
         }
     }
 
@@ -70,51 +86,10 @@ public class ItemsFeed : MonoBehaviour
         {
             await UniTask.WaitForSeconds(_timeBetweenSpawn);
 
-            var spawned = GetMob();
+            var spawned = _mobFactory.GetMob();
             spawned.transform.position = _startPosition.position;
             spawned.gameObject.SetActive(true);
             spawned.SetDestanation(_endPosition.transform.position);
         }
-    }
-
-    private BrainrotMob GetMob()
-    {
-        BrainrotMob resultBrainrot = _currentBrainrotAssetsCollection.FirstOrDefault(brainrot => brainrot.gameObject.activeInHierarchy == false);
-        
-        if (resultBrainrot == null)
-        {
-            resultBrainrot = SpawnMob(_startPosition.position, GetMissingConfig());
-        }
-        else
-        {
-            resultBrainrot.ResetMob();
-        }
-        return resultBrainrot;
-    }
-
-    private BrainrotMobConfig GetMissingConfig()
-    {
-        BrainrotMobConfig missingConfig;
-
-        var usedConfigs = _currentBrainrotAssetsCollection.Select(mob => mob.Config).ToHashSet();
-        missingConfig = _possibleAssets.FirstOrDefault(config => !usedConfigs.Contains(config));
-        
-        if (missingConfig == null)
-        {
-            missingConfig = _possibleAssets[Random.Range(0, _possibleAssets.Count)];
-
-        }
-        return missingConfig;
-    }
-
-    private BrainrotMob SpawnMob(Vector3 spawnPosition, BrainrotMobConfig config)
-    {
-        var spawned = Instantiate(_mobTemplate, _spawnedContainer);
-        spawned.transform.position = spawnPosition;
-        spawned.Initialize(config);
-
-        _currentBrainrotAssetsCollection.Add(spawned);
-
-        return spawned;
     }
 }

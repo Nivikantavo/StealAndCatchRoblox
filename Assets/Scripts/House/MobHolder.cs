@@ -37,6 +37,15 @@ public class MobHolder : MonoBehaviour
             }
         }
     }
+
+    public void Restart()
+    {
+        if(_mob != null)
+        {
+            ClearMob();
+        }
+        _earned = 0;
+    }
     
     public void SetMob(BrainrotMob mob)
     {

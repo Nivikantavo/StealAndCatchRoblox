@@ -13,9 +13,10 @@ public class MissionTracker : MonoBehaviour
     private PlayerHouse _playerHouse;
     private MissionTrackerPanel _missionTrackerPanel;
     private UserData _userData;
+    private LevelStarter _levelStarter; //TODO: убрать
 
     [Inject]
-    private void Construct(UserPlayer player, PlayerHouse playerHouse, MissionTrackerPanel missionTrackerPanel)
+    private void Construct(UserPlayer player, PlayerHouse playerHouse, MissionTrackerPanel missionTrackerPanel, LevelStarter levelStarter)
     {
         _player = player;
         _playerHouse = playerHouse;
@@ -28,6 +29,8 @@ public class MissionTracker : MonoBehaviour
 
         _player.Wallet.MoneyCountChanged += OnMoneyValueChange;
         _playerHouse.MobAdded += OnMobCollectionChange;
+
+        _levelStarter = levelStarter; //TODO: убрать
     }
 
     private void OnDisable() //TODO: заменить на OnDispose
@@ -68,5 +71,6 @@ public class MissionTracker : MonoBehaviour
         _userData.CurrentLeague++;
         _currentMission = _config.GetMission(_userData.CurrentLeague);
         _missionTrackerPanel.Initialize(_currentMission.MoneyMission.MoneyValueMission, _currentMission.MobMissions, _player.Wallet.Money);
+        _levelStarter.RestartLevel();
     }
 }

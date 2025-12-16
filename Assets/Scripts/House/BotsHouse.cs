@@ -6,7 +6,7 @@ using Zenject;
 
 public class BotsHouse : House
 {
-    public Transform OwnerSpawnPosition => _ownerSpawnPosition;
+    
     public Transform LockButtonPosition => Locker.LockButtonPosition;
     //public List<Transform> FullCollecters => Holders.Where(holder => holder.Earned == holder.MaxValue).Select(holder=> holder.CollectPosition).ToList();
     public IEnumerable<Transform> FullCollecters
@@ -25,7 +25,7 @@ public class BotsHouse : House
 
     public IInteractable CheapestMob => Holders.FirstOrDefault(mob => mob.MaxValue == Holders.Max(holder => holder.MaxValue)).Mob;
 
-    [SerializeField] private Transform _ownerSpawnPosition;
+    
 
     public void Initialzie(BotPlayer owner, int layer)
     {
@@ -33,19 +33,24 @@ public class BotsHouse : House
         Owner.Initialize(this);
         LayerNumber = layer;
         Owner.gameObject.layer = LayerNumber;
-        MobCatcher.Initialize(Owner);
+        MobCatcher.Initialize(Holders, Owner);
         Locker.Initialize(Owner);
         SecuritySystem.Initialize(Holders, Owner);
     }
 
-    public bool IsEarnedaLot()
+    public bool IsEarnedaLot()//TODO: вывести в конфиг процент или рандомизировать его
     {
         if(HasMobs == false)
             return false;
 
-        if(Holders.Any(holder => holder.MaxValue == holder.Earned))
+        var nonFreeCount = Holders.Count(holder => !holder.IsFree);
+        if (nonFreeCount > 0)
         {
-            return true;
+            var maxValueCount = Holders.Count(holder => holder.MaxValue == holder.Earned);
+            if (maxValueCount > nonFreeCount * 0.5f)
+            {
+                return true;
+            }
         }
         return false;
     }

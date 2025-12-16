@@ -126,6 +126,16 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: a50808cca2ef2f14abafd852050b48eb,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: a50808cca2ef2f14abafd852050b48eb,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a1ced1b39ea8f6a4c9d5e6c5940589e5, type: 2}
+    - target: {fileID: 5866666021909216657, guid: a50808cca2ef2f14abafd852050b48eb,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

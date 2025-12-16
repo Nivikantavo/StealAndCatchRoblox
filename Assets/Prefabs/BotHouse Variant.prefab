@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: _layerNumber
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6369747885704406799, guid: 6250ff2c23d5e704eaf29d28b0004bd5,
+        type: 3}
+      propertyPath: _lockTime
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4224295485587711667, guid: 6250ff2c23d5e704eaf29d28b0004bd5, type: 3}
     - {fileID: 6251584418024020730, guid: 6250ff2c23d5e704eaf29d28b0004bd5, type: 3}

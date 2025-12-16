@@ -19,17 +19,6 @@ public abstract class Player : MonoBehaviour
     protected float AttackCooldown = 2;
     protected float AttackElapsedTime = 0;
 
-    protected virtual void Update()
-    {
-        if(AttackElapsedTime <  AttackCooldown)
-            AttackElapsedTime += Time.deltaTime;
-    }
-
-    public MobHolder GetFreeMobHolder()
-    {
-        return _house.GetFreeHolder();
-    }
-
     public virtual void Initialize(House house)
     {
         _house = house;
@@ -45,6 +34,22 @@ public abstract class Player : MonoBehaviour
 
         Stealer.MobWasTaken += OnMobTaken;
         Stealer.MobWasReleased += OnMobReleased;
+    }
+
+    protected virtual void Update()
+    {
+        if(AttackElapsedTime <  AttackCooldown)
+            AttackElapsedTime += Time.deltaTime;
+    }
+
+    public MobHolder GetFreeMobHolder()
+    {
+        return _house.GetFreeHolder();
+    }
+
+    public void SetNewSkin(Animator animator)
+    {
+        _characterAnimation.SetNewSkin(animator);
     }
 
     public virtual void Attack()

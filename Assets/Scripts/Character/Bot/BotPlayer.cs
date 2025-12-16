@@ -1,14 +1,14 @@
-using Cysharp.Threading.Tasks;
+using BehaviorDesigner.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 public class BotPlayer : Player
 {
     public BehaviorTreeData BehaviorTreeData { get; private set; }
+    [SerializeField] private BehaviorTree _behaviorTree;
+
     //вынести в конфиг
     [SerializeField] private float _findTargetDistance;
     [SerializeField] private float _defaultSpeed;
@@ -23,7 +23,8 @@ public class BotPlayer : Player
         base.Initialize(house);
         _botCharacterController = GetComponent<BotCharacterController>();
         BehaviorTreeData = new BehaviorTreeData(_botsHouse, _botInteractor.InteractionRange, _botInteractor.InteractionRange, _botCharacterController);
-        
+        _behaviorTree.DisableBehavior();
+        _behaviorTree.EnableBehavior();
     }
 
     public override void Attack()

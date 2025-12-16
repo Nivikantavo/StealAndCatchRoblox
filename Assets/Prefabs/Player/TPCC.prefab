@@ -330,7 +330,7 @@ Transform:
   m_GameObject: {fileID: 6124162036306143304}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: 0, y: 1.499, z: 1.359}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -711,15 +711,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: e278fece43cd98a4e9f4a6beaa544b5d,
         type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:RightFoot'\n\tTransform
-        'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftHand'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
-        'mixamorig:Spine1'\n\tTransform 'mixamorig:Spine2'\n\tTransform 'mixamorig:RightUpLeg'\n\tTransform
-        'mixamorig:LeftHandIndex3'\n\tTransform 'mixamorig:RightForeArm'\n\tand more
-        ...\n\tFrom animation clip 'Run'\n\tFrom animation clip 'Idle'\n\tFrom animation
-        clip 'Jump'\n\tFrom animation clip 'Falling'\n\tFrom animation clip 'Attack'\n\tFrom
-        animation clip 'Idle'\n\tFrom animation clip 'Run'"
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -824,6 +816,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: a7c7e16b76c1e774e972551b3d1b25b1,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -13,6 +13,7 @@ public class HouseLocker : MonoBehaviour
     [SerializeField] private float _lockTime = 10;
 
     private Player _owner;
+    private Coroutine _closedCoroutine;
 
     public void Initialize(Player player)
     {
@@ -31,6 +32,15 @@ public class HouseLocker : MonoBehaviour
         _lockButton.LockerButtonWasClicked -= OnLockerButtonWasClicked;
     }
 
+    public void Restart()
+    {
+        _lock.SetActive(false);
+        if(_closedCoroutine != null)
+        {
+            StopCoroutine(_closedCoroutine);
+        }
+    }
+
     private void OnLockerButtonWasClicked(Player player)
     {
         if (IsClosed) return;
@@ -39,15 +49,15 @@ public class HouseLocker : MonoBehaviour
         SetClosed(_lockTime);
     }
 
-    private async void SetClosed(float timeInSeconds)
+    private void SetClosed(float timeInSeconds)
     {
-        await CloseHouseForTime(timeInSeconds);
+        _closedCoroutine = StartCoroutine(CloseHouseForTime(timeInSeconds));
     }
 
-    private async UniTask CloseHouseForTime(float timeInSeconds)
+    private IEnumerator CloseHouseForTime(float timeInSeconds)
     {
         _lock.SetActive(true);
-        await UniTask.WaitForSeconds(timeInSeconds);
+        yield return new WaitForSeconds(timeInSeconds);
         _lock.SetActive(false);
     }
 

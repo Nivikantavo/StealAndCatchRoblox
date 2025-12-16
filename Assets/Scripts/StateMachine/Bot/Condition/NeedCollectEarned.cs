@@ -10,7 +10,6 @@ namespace BotBehavior
     {
         public override TaskStatus OnUpdate()
         {
-            Debug.Log("Check FullCollecters");
             return Bot.BehaviorTreeData.FullCollecters.Count() > 0 ? TaskStatus.Success : TaskStatus.Failure;
         }
     }

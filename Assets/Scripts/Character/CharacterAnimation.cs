@@ -36,4 +36,14 @@ public class CharacterAnimation : MonoBehaviour
     {
         _animator.SetBool(IsKnoked, isKnoked);
     }
+
+    public void SetNewSkin(Animator animator)
+    {
+        foreach (var oldSkin in gameObject.GetComponentsInChildren<Animator>(true))
+        {
+            Destroy(oldSkin.gameObject);
+        }
+        var skin = Instantiate(animator, transform);
+        _animator = skin;
+    }
 }

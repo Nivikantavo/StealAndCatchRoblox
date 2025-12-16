@@ -2656,6 +2656,7 @@ MonoBehaviour:
   - {fileID: 4017196841076433307}
   - {fileID: 7709201397746367315}
   SecuritySystem: {fileID: 3055763762252317811}
+  _ownerSpawnPosition: {fileID: 999534495580791157}
 --- !u!65 &5285792868674489523
 BoxCollider:
   m_ObjectHideFlags: 0

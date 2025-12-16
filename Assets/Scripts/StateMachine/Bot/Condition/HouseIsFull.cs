@@ -1,5 +1,6 @@
 using BehaviorDesigner.Runtime.Tasks;
 using BotBehavior;
+using UnityEngine;
 
 public class HouseIsFull : BotCondition
 {
@@ -7,6 +8,7 @@ public class HouseIsFull : BotCondition
     {
         if (Bot.BehaviorTreeData.HasFreeHolder == false)
         {
+            Debug.Log("Нет свободных мест");
             Bot.BehaviorTreeData.CurrentTarget = Bot.BehaviorTreeData.GetCheapestMobInHouse();
             return TaskStatus.Success;
         }

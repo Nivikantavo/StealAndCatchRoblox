@@ -10,27 +10,38 @@ public class BotsInstaller : MonoInstaller
 {
     [SerializeField] private BotPlayer _botTemplate;
     [SerializeField] private BotsHouse _botHouseTemplate;
-    [SerializeField] private List<HousePlace> _housesPositions;
-    [SerializeField] private NavMeshSurface _navMeshSurface;
+    [SerializeField] private SkinsPool _skinsPool;
     [SerializeField] private int _botsPlayersCount;
 
     public override void InstallBindings()
     {
         BindBots();
+        BindBotsSkins();
     }
 
     private void BindBots()
     {
-        for (int i = 0; i < _housesPositions.Count - 1 && i < _botsPlayersCount; i++)
+        var bots = new List<BotPlayer>();
+        var houses = new List<BotsHouse>();
+        for (int i = 0; i < _botsPlayersCount; i++)
         {
-            var housePlace = _housesPositions.FirstOrDefault(place => place.HasHouse == false);
-
-            BotsHouse spawnedHouse = Container.InstantiatePrefabForComponent<BotsHouse>(_botHouseTemplate, housePlace.transform.position, housePlace.transform.rotation, null);
-            housePlace.SetHouse(spawnedHouse);
-            BotPlayer botPlayer = Container.InstantiatePrefabForComponent<BotPlayer>(_botTemplate, spawnedHouse.OwnerSpawnPosition.position, Quaternion.identity, null);
-            spawnedHouse.Initialzie(botPlayer, i + 8);
+            BotsHouse spawnedHouse = Container.InstantiatePrefabForComponent<BotsHouse>(_botHouseTemplate);
+            BotPlayer botPlayer = Container.InstantiatePrefabForComponent<BotPlayer>(_botTemplate);
+            bots.Add(botPlayer);
+            houses.Add(spawnedHouse);
         }
-        
-        _navMeshSurface.BuildNavMesh();
+
+        Container.Bind<List<BotPlayer>>()
+            .FromInstance(bots)
+            .AsSingle();
+
+        Container.Bind<List<BotsHouse>>()
+                 .FromInstance(houses)
+                 .AsSingle();
+    }
+
+    private void BindBotsSkins()
+    {
+        Container.Bind<SkinsPool>().FromScriptableObject(_skinsPool).AsSingle();
     }
 }

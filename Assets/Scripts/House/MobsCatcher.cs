@@ -11,10 +11,11 @@ public class MobsCatcher : MonoBehaviour
     public bool HasFreeHolder => _mobHolders.Exists(holder => holder.IsFree);
     public bool HasMobs => _mobHolders.Exists(holder => holder.IsFree == false);
 
-    [SerializeField] private List<MobHolder> _mobHolders;
+    private List<MobHolder> _mobHolders;
 
-    public void Initialize(Player owner)
+    public void Initialize(List<MobHolder> holders, Player owner)
     {
+        _mobHolders = holders;
         foreach (var mobHolder in _mobHolders)
         {
             mobHolder.Initialize(owner);
@@ -24,6 +25,14 @@ public class MobsCatcher : MonoBehaviour
     public MobHolder GetFreeHolder()
     {
         return _mobHolders.FirstOrDefault(holder => holder.IsFree);
+    }
+
+    public void Restart()
+    {
+        foreach (var mobHolder in _mobHolders)
+        {
+            mobHolder.Restart();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

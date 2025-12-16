@@ -10,6 +10,21 @@ public class HousePlace : MonoBehaviour
 
     public void SetHouse(House house)
     {
-        _house = house;
+        if (_house == null)
+        {
+            _house = house;
+        }
+        else
+        {
+            throw new System.Exception("place already busy");
+        }
+    }
+
+    public void Clear()
+    {
+        if (_house != null)
+        {
+            _house = null;
+        }
     }
 }
