@@ -1,0 +1,42 @@
+newmtl Player1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Matsushima_Tex2.png
+map_Kd Matsushima_Tex2.png
+map_d Matsushima_Tex2.png
+
+newmtl Handle2Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Matsushima_Tex1.png
+map_Kd Matsushima_Tex1.png
+map_d Matsushima_Tex1.png
+
+newmtl Handle1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Matsushima_Tex3.png
+map_Kd Matsushima_Tex3.png
+map_d Matsushima_Tex3.png
+

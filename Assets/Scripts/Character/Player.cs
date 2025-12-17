@@ -5,6 +5,7 @@ using Zenject;
 
 public abstract class Player : MonoBehaviour
 {
+    public string Name { get; protected set; }
     public IInteractor Interactor => _interactor;
     public IWallet Wallet => _wallet;
     public IStealer Stealer => _mobStealer;
@@ -19,7 +20,7 @@ public abstract class Player : MonoBehaviour
     protected float AttackCooldown = 2;
     protected float AttackElapsedTime = 0;
 
-    public virtual void Initialize(House house)
+    public virtual void Initialize(House house, string name)
     {
         _house = house;
         _interactor = GetComponent<IInteractor>();
@@ -34,6 +35,7 @@ public abstract class Player : MonoBehaviour
 
         Stealer.MobWasTaken += OnMobTaken;
         Stealer.MobWasReleased += OnMobReleased;
+        Name = name;
     }
 
     protected virtual void Update()

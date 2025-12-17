@@ -1,0 +1,84 @@
+newmtl Handle6Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka dgtlstar_Tex1.png
+map_Kd dgtlstar_Tex1.png
+map_d dgtlstar_Tex1.png
+
+newmtl Handle4Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka dgtlstar_Tex3.png
+map_Kd dgtlstar_Tex3.png
+map_d dgtlstar_Tex3.png
+
+newmtl Handle3Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka dgtlstar_Tex4.png
+map_Kd dgtlstar_Tex4.png
+map_d dgtlstar_Tex4.png
+
+newmtl Player1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka dgtlstar_Tex2.png
+map_Kd dgtlstar_Tex2.png
+map_d dgtlstar_Tex2.png
+
+newmtl Handle2Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka dgtlstar_Tex5.png
+map_Kd dgtlstar_Tex5.png
+map_d dgtlstar_Tex5.png
+
+newmtl Handle1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka dgtlstar_Tex6.png
+map_Kd dgtlstar_Tex6.png
+map_d dgtlstar_Tex6.png
+

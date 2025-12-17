@@ -1,0 +1,56 @@
+newmtl Handle2Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka DinoxLive_Tex3.png
+map_Kd DinoxLive_Tex3.png
+map_d DinoxLive_Tex3.png
+
+newmtl Player2Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka DinoxLive_Tex1.png
+map_Kd DinoxLive_Tex1.png
+map_d DinoxLive_Tex1.png
+
+newmtl Handle1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka DinoxLive_Tex2.png
+map_Kd DinoxLive_Tex2.png
+map_d DinoxLive_Tex2.png
+
+newmtl Player1Mtl
+Material Color
+Ka 0.917647 0.721569 0.572549
+Kd 0.917647 0.721569 0.572549
+Ks 0.0791695 0.062253 0.0493964 
+
+d 1
+
+Ns 255
+
+map_Ka DinoxLive_Tex4.png
+map_Kd DinoxLive_Tex4.png
+map_d DinoxLive_Tex4.png
+

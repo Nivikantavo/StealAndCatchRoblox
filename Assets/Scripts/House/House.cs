@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class House : MonoBehaviour
@@ -8,6 +9,7 @@ public class House : MonoBehaviour
     public bool HasMobs => MobCatcher.HasMobs;
     public Transform OwnerSpawnPosition => _ownerSpawnPosition;
 
+    [SerializeField] protected TextMeshProUGUI OwnerNameView;
     [SerializeField] protected MobsCatcher MobCatcher;
     [SerializeField] protected HouseLocker Locker;
     [SerializeField] protected List<MobHolder> Holders;
@@ -15,6 +17,7 @@ public class House : MonoBehaviour
     [SerializeField] private Transform _ownerSpawnPosition;
 
     protected int LayerNumber;
+    protected string PlayerName;
     protected Player Owner;
 
     public MobHolder GetFreeHolder()

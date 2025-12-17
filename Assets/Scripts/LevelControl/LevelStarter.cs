@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -16,9 +17,12 @@ public class LevelStarter : MonoBehaviour
     private List<BotsHouse> _botsHouses;
     private List<BotPlayer> _bots;
     private SkinsPool _skinsPool;
+    private BotsNicknameContainer _botNicknameContainer;
 
     [Inject]
-    private void Construct(UserPlayer userPlayer, PlayerHouse playerHouse, NavMeshSurface navMesh, List<HousePlace> housePlaces, List<BotsHouse> botsHouses, List<BotPlayer> bots, SkinsPool skinsPool)
+    private void Construct(UserPlayer userPlayer, PlayerHouse playerHouse, NavMeshSurface navMesh, 
+        List<HousePlace> housePlaces, List<BotsHouse> botsHouses, List<BotPlayer> bots, 
+        SkinsPool skinsPool)
     {
         _userPlayer = userPlayer;
         _playerHouse = playerHouse;
@@ -27,6 +31,8 @@ public class LevelStarter : MonoBehaviour
         _botsHouses = botsHouses;
         _bots = bots;
         _skinsPool = skinsPool;
+
+        _botNicknameContainer = new BotsNicknameContainer();
     }
 
     private void Start()
@@ -77,6 +83,7 @@ public class LevelStarter : MonoBehaviour
 
     private void PutBotsHousesOnPlace()
     {
+        List<string> names = _botNicknameContainer.GetSeveralUniqueNicknames(_bots.Count);
         for (int i = 0; i < _housePlaces.Count - 1; i++)
         {
             _bots[i].gameObject.SetActive(false);
@@ -89,7 +96,7 @@ public class LevelStarter : MonoBehaviour
             _bots[i].transform.position = _botsHouses[i].OwnerSpawnPosition.position;
             _bots[i].gameObject.SetActive(true);
 
-            _botsHouses[i].Initialzie(_bots[i], i + 8);
+            _botsHouses[i].Initialzie(_bots[i], i + 8, names[i]);
             _bots[i].SetNewSkin(_skinsPool.GetRandomSkin());
         }
     }

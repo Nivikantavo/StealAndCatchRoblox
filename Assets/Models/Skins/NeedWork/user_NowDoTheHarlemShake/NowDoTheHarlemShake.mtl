@@ -1,0 +1,42 @@
+newmtl Handle2Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka NowDoTheHarlemShake_Tex2.png
+map_Kd NowDoTheHarlemShake_Tex2.png
+map_d NowDoTheHarlemShake_Tex2.png
+
+newmtl Handle1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka NowDoTheHarlemShake_Tex1.png
+map_Kd NowDoTheHarlemShake_Tex1.png
+map_d NowDoTheHarlemShake_Tex1.png
+
+newmtl Player1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka NowDoTheHarlemShake_Tex3.png
+map_Kd NowDoTheHarlemShake_Tex3.png
+map_d NowDoTheHarlemShake_Tex3.png
+

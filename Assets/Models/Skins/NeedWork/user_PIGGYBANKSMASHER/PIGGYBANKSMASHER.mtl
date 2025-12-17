@@ -1,0 +1,28 @@
+newmtl Handle2Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka PIGGYBANKSMASHER_Tex1.png
+map_Kd PIGGYBANKSMASHER_Tex1.png
+map_d PIGGYBANKSMASHER_Tex1.png
+
+newmtl Handle1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka PIGGYBANKSMASHER_Tex2.png
+map_Kd PIGGYBANKSMASHER_Tex2.png
+map_d PIGGYBANKSMASHER_Tex2.png
+

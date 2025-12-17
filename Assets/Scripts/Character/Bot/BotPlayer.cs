@@ -2,13 +2,14 @@ using BehaviorDesigner.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class BotPlayer : Player
 {
     public BehaviorTreeData BehaviorTreeData { get; private set; }
     [SerializeField] private BehaviorTree _behaviorTree;
-
+    [SerializeField] private TextMeshProUGUI _playerNameView;
     //вынести в конфиг
     [SerializeField] private float _findTargetDistance;
     [SerializeField] private float _defaultSpeed;
@@ -18,14 +19,15 @@ public class BotPlayer : Player
     private BotsHouse _botsHouse => _house as BotsHouse;
     private BotCharacterController _botCharacterController;
 
-    public override void Initialize(House house)
+    public override void Initialize(House house, string name)
     {
-        base.Initialize(house);
+        base.Initialize(house, name);
         _botCharacterController = GetComponent<BotCharacterController>();
         BehaviorTreeData = new BehaviorTreeData(_botsHouse, _botInteractor.InteractionRange, _botInteractor.InteractionRange, _botCharacterController);
         _botCharacterController.agent.avoidancePriority = gameObject.layer;
         _behaviorTree.DisableBehavior();
         _behaviorTree.EnableBehavior();
+        _playerNameView.text = name;
     }
 
     public override void Attack()

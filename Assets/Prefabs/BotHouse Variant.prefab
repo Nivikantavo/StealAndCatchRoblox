@@ -101,6 +101,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845d540b1b5f2d1478163993f65de770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &973965750506935954 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5224467043330995926, guid: 6250ff2c23d5e704eaf29d28b0004bd5,
+    type: 3}
+  m_PrefabInstance: {fileID: 4973435964952567876}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1722523770728944736 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5972498331980624932, guid: 6250ff2c23d5e704eaf29d28b0004bd5,
@@ -209,6 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d0e156608ffb043bcf17e87a51aad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OwnerNameView: {fileID: 973965750506935954}
   MobCatcher: {fileID: 7873257250931512249}
   Locker: {fileID: 2116923120665397067}
   Holders:

@@ -12,7 +12,7 @@ public class PlayerHouse : House
     private void Construct(UserPlayer owner)
     {
         Owner = owner;
-        Owner.Initialize(this);
+        Owner.Initialize(this, string.Empty);
         LayerNumber = 7;
         Owner.gameObject.layer = LayerNumber;
         MobCatcher.Initialize(Holders, Owner);

@@ -1,0 +1,98 @@
+newmtl Player1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Maya_Gucci_Tex5.png
+map_Kd Maya_Gucci_Tex5.png
+map_d Maya_Gucci_Tex5.png
+
+newmtl Handle8Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Maya_Gucci_Tex1.png
+map_Kd Maya_Gucci_Tex1.png
+map_d Maya_Gucci_Tex1.png
+
+newmtl Handle5Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Maya_Gucci_Tex4.png
+map_Kd Maya_Gucci_Tex4.png
+map_d Maya_Gucci_Tex4.png
+
+newmtl Handle4Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Maya_Gucci_Tex2.png
+map_Kd Maya_Gucci_Tex2.png
+map_d Maya_Gucci_Tex2.png
+
+newmtl Handle3Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Maya_Gucci_Tex6.png
+map_Kd Maya_Gucci_Tex6.png
+map_d Maya_Gucci_Tex6.png
+
+newmtl Handle2Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Maya_Gucci_Tex3.png
+map_Kd Maya_Gucci_Tex3.png
+map_d Maya_Gucci_Tex3.png
+
+newmtl Handle1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Maya_Gucci_Tex7.png
+map_Kd Maya_Gucci_Tex7.png
+map_d Maya_Gucci_Tex7.png
+

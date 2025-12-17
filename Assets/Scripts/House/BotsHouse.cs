@@ -27,15 +27,17 @@ public class BotsHouse : House
 
     
 
-    public void Initialzie(BotPlayer owner, int layer)
+    public void Initialzie(BotPlayer owner, int layer, string botName)
     {
         Owner = owner;
         LayerNumber = layer;
         Owner.gameObject.layer = LayerNumber;
-        Owner.Initialize(this);
+        Owner.Initialize(this, botName);
         MobCatcher.Initialize(Holders, Owner);
         Locker.Initialize(Owner);
         SecuritySystem.Initialize(Holders, Owner);
+
+        OwnerNameView.text = owner.Name;
     }
 
     public bool IsEarnedaLot()//TODO: вывести в конфиг процент или рандомизировать его

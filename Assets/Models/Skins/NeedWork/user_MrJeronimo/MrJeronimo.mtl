@@ -1,0 +1,102 @@
+newmtl Handle7Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka MrJeronimo_Tex2.png
+map_Kd MrJeronimo_Tex2.png
+map_d MrJeronimo_Tex2.png
+
+newmtl Handle6Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka MrJeronimo_Tex3.png
+map_Kd MrJeronimo_Tex3.png
+map_d MrJeronimo_Tex3.png
+
+newmtl Handle5Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka MrJeronimo_Tex4.png
+map_Kd MrJeronimo_Tex4.png
+map_d MrJeronimo_Tex4.png
+
+newmtl Handle4Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka MrJeronimo_Tex8.png
+map_Kd MrJeronimo_Tex8.png
+map_d MrJeronimo_Tex8.png
+
+newmtl Player1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka MrJeronimo_Tex1.png
+map_Kd MrJeronimo_Tex1.png
+map_d MrJeronimo_Tex1.png
+
+newmtl Handle3Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka MrJeronimo_Tex5.png
+map_Kd MrJeronimo_Tex5.png
+map_d MrJeronimo_Tex5.png
+
+newmtl Handle1Mtl
+Material Color
+Ka 0.639216 0.635294 0.647059
+Kd 0.639216 0.635294 0.647059
+Ks 0.055148 0.0548097 0.0558247 
+
+d 1
+
+Ns 255
+
+map_Ka MrJeronimo_Tex9.png
+map_Kd MrJeronimo_Tex9.png
+map_d MrJeronimo_Tex9.png
+
+map_Bump MrJeronimo_Tex7.png
+
+map_Ns MrJeronimo_Tex6.png
+
