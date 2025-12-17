@@ -23,6 +23,7 @@ public class BotPlayer : Player
         base.Initialize(house);
         _botCharacterController = GetComponent<BotCharacterController>();
         BehaviorTreeData = new BehaviorTreeData(_botsHouse, _botInteractor.InteractionRange, _botInteractor.InteractionRange, _botCharacterController);
+        _botCharacterController.agent.avoidancePriority = gameObject.layer;
         _behaviorTree.DisableBehavior();
         _behaviorTree.EnableBehavior();
     }

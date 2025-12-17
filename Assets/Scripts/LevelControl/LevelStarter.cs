@@ -86,11 +86,11 @@ public class LevelStarter : MonoBehaviour
             _botsHouses[i].transform.rotation = housePlace.transform.rotation;
             housePlace.SetHouse(_botsHouses[i]);
 
-            _botsHouses[i].Initialzie(_bots[i], i + 8);
-
-            _bots[i].SetNewSkin(_skinsPool.GetRandomSkin());
             _bots[i].transform.position = _botsHouses[i].OwnerSpawnPosition.position;
             _bots[i].gameObject.SetActive(true);
+
+            _botsHouses[i].Initialzie(_bots[i], i + 8);
+            _bots[i].SetNewSkin(_skinsPool.GetRandomSkin());
         }
     }
 }

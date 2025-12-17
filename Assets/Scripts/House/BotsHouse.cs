@@ -30,9 +30,9 @@ public class BotsHouse : House
     public void Initialzie(BotPlayer owner, int layer)
     {
         Owner = owner;
-        Owner.Initialize(this);
         LayerNumber = layer;
         Owner.gameObject.layer = LayerNumber;
+        Owner.Initialize(this);
         MobCatcher.Initialize(Holders, Owner);
         Locker.Initialize(Owner);
         SecuritySystem.Initialize(Holders, Owner);
