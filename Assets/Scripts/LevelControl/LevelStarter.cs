@@ -16,13 +16,13 @@ public class LevelStarter : MonoBehaviour
     private PlayerHouse _playerHouse;
     private List<BotsHouse> _botsHouses;
     private List<BotPlayer> _bots;
-    private SkinsPool _skinsPool;
+    private SkinsPoolConfig _skinsPool;
     private BotsNicknameContainer _botNicknameContainer;
 
     [Inject]
     private void Construct(UserPlayer userPlayer, PlayerHouse playerHouse, NavMeshSurface navMesh, 
         List<HousePlace> housePlaces, List<BotsHouse> botsHouses, List<BotPlayer> bots, 
-        SkinsPool skinsPool)
+        SkinsPoolConfig skinsPool)
     {
         _userPlayer = userPlayer;
         _playerHouse = playerHouse;

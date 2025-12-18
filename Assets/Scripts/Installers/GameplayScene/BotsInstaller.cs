@@ -10,7 +10,7 @@ public class BotsInstaller : MonoInstaller
 {
     [SerializeField] private BotPlayer _botTemplate;
     [SerializeField] private BotsHouse _botHouseTemplate;
-    [SerializeField] private SkinsPool _skinsPool;
+    [SerializeField] private SkinsPoolConfig _skinsPool;
     [SerializeField] private int _botsPlayersCount;
 
     public override void InstallBindings()
@@ -42,6 +42,6 @@ public class BotsInstaller : MonoInstaller
 
     private void BindBotsSkins()
     {
-        Container.Bind<SkinsPool>().FromScriptableObject(_skinsPool).AsSingle();
+        Container.Bind<SkinsPoolConfig>().FromScriptableObject(_skinsPool).AsSingle();
     }
 }
