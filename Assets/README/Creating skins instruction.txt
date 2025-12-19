@@ -6,4 +6,11 @@
 6. клонировать базовый animator controller, вставить новые анимации
 7. в анимации koncked out проверить y позицию при ноке, при необходмости поставить галочку у пункта bake into pose (y)
 
+Доавить итем в магазин
+1. Добавить enum в CharacterSkin
+2. Добавить в Assets/Resources/Shop/CharacterSkins SO CharacterSkinItem
+3. Сделать превью скина 
+4. Заполнить данные SO
+5. Добавить SO скина в ShopContent SO
+
 PS: Скачать аватары игроков можно на https://rblxchar-frontend.vercel.app/
