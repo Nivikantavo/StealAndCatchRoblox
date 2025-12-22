@@ -15,7 +15,7 @@ public interface IInteractor
     public MobHolder MobHolder { get; }
     public Transform SelfTransform { get; }
     public Transform HouseTransform { get; }
-    public IWallet Wallet { get; }
+    public InGameWallet Wallet { get; }
     public IStealer Stealer { get; }
 
     public void Initialize(Player player, Transform houseTransform);

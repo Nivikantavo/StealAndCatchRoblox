@@ -7,14 +7,14 @@ public abstract class Player : MonoBehaviour
 {
     public string Name { get; protected set; }
     public IInteractor Interactor => _interactor;
-    public IWallet Wallet => _wallet;
+    public InGameWallet Wallet => _wallet;
     public IStealer Stealer => _mobStealer;
 
     private IInteractor _interactor;
     protected PlayerFighter _fighter;
     protected CharacterAnimation _characterAnimation;
     protected House _house;
-    protected Wallet _wallet;
+    protected InGameWallet _wallet;
     protected MobStealer _mobStealer;
 
     protected float AttackCooldown = 2;
@@ -31,7 +31,7 @@ public abstract class Player : MonoBehaviour
         _interactor.Initialize(this, _house.transform);
         _mobStealer.Initialize(_interactor);
         _fighter.Initialize(this);
-        _wallet = new Wallet(1000);
+        _wallet = new InGameWallet(1000);//TODO брать из загруженной даты или конфига
 
         Stealer.MobWasTaken += OnMobTaken;
         Stealer.MobWasReleased += OnMobReleased;

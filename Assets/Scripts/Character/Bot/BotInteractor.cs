@@ -5,7 +5,7 @@ public class BotInteractor : MonoBehaviour, IInteractor
 {
     public Transform SelfTransform { get; private set; }
     public Transform HouseTransform { get; private set; }
-    public IWallet Wallet => _player.Wallet;
+    public InGameWallet Wallet => _player.Wallet;
     public MobHolder MobHolder => _player.GetFreeMobHolder();
     public float InteractionRange => _interactionRange;
     public IStealer Stealer => _player.Stealer;

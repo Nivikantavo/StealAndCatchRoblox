@@ -1,10 +1,10 @@
 using System;
 
-public class Wallet : IWallet
+public abstract class Wallet
 {
     public int Balance => _balance;
 
-    private int _balance = 0;
+    protected int _balance = 0;
 
     public event Action<int> MoneyCountChanged;
 
@@ -21,15 +21,20 @@ public class Wallet : IWallet
         MoneyCountChanged?.Invoke(_balance);
     }
 
-    public bool TrySpendMoney(int amount)
+    public bool IsEnough(int amount)
     {
-        if (amount < 0) return false;
-        if (_balance >= amount)
-        {
-            _balance -= amount;
-            MoneyCountChanged?.Invoke(_balance);
-            return true;
-        }
-        return false;
+        if (amount < 0)
+            throw new ArgumentOutOfRangeException(nameof(amount));
+
+        return _balance < amount;
+    }
+
+    public void Spend(int amount)
+    {
+        if (amount < 0)
+            throw new ArgumentOutOfRangeException(nameof(amount));
+
+        _balance -= amount;
+        MoneyCountChanged?.Invoke(_balance);
     }
 }

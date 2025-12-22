@@ -16,12 +16,13 @@ public class PurchasableMob : InteractAction
         {
             return false;
         }
-        else if (interactor.Wallet.TrySpendMoney(_mob.Config.BaseCost) == false)
+        else if (interactor.Wallet.IsEnough(_mob.Config.BaseCost) == false)
         {
             return false;
         }
         else
         {
+            interactor.Wallet.Spend(_mob.Config.BaseCost);
             ExecuteAction(interactor);
             PurchaseMob(holder);
             holder.SetMob(_mob);
