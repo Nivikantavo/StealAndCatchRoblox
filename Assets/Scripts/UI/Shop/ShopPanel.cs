@@ -12,15 +12,34 @@ public class ShopPanel : MonoBehaviour
 
     private void Start()
     {
-        Initialize(_shopContent, _shopItemViewFactory);
+        Initialize(_shopContent.CharacterSkinItems);
     }
 
-    public void Initialize(ShopContent content, ShopItemViewFactory factory)
+    public void Initialize(IEnumerable<CharacterSkinItem> content)
     {
-        _shopItemViewFactory = factory;
-        foreach (var item in content.CharacterSkinItems)
+        foreach (var item in content)
         {
-            _shopItems.Add(_shopItemViewFactory.Get(item, _itemsContainer));
+            ShopItemView spawnedItemView = _shopItemViewFactory.Get(item, _itemsContainer);
+            spawnedItemView.ShopItemViewClick += OnShopItemViewClicked;
+            
+            spawnedItemView.Unselect();
+
+            //TODO: ƒобавить проверку открытости скина.
+
+            _shopItems.Add(spawnedItemView);
         }
+    }
+
+    private void OnDestroy()
+    {
+        foreach(var item in _shopItems)
+        {
+            item.ShopItemViewClick -= OnShopItemViewClicked;
+        }
+    }
+
+    private void OnShopItemViewClicked(ShopItemView view)
+    {
+        throw new System.NotImplementedException();
     }
 }

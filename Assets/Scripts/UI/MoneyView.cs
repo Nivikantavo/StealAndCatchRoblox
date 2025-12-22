@@ -16,7 +16,7 @@ public class MoneyView : MonoBehaviour
     {
         _player = player;
         _player.Wallet.MoneyCountChanged += OnMoneyCountChanged;
-        OnMoneyCountChanged(_player.Wallet.Money);
+        OnMoneyCountChanged(_player.Wallet.Balance);
     }
 
     private void OnDisable()

@@ -48,7 +48,7 @@ public class MissionTracker : MonoBehaviour
     private void OnMoneyValueChange(int newValue)
     {
         _missionTrackerPanel.SetMoneyValue(newValue);
-        _currentMission.MoneyMission.Complited = _player.Wallet.Money >= _currentMission.MoneyMission.MoneyValueMission;
+        _currentMission.MoneyMission.Complited = _player.Wallet.Balance >= _currentMission.MoneyMission.MoneyValueMission;
 
         if (AllMissionsComplited())
         {
@@ -70,7 +70,7 @@ public class MissionTracker : MonoBehaviour
     {
         _userData.CurrentLeague++;
         _currentMission = _config.GetMission(_userData.CurrentLeague);
-        _missionTrackerPanel.Initialize(_currentMission.MoneyMission.MoneyValueMission, _currentMission.MobMissions, _player.Wallet.Money);
+        _missionTrackerPanel.Initialize(_currentMission.MoneyMission.MoneyValueMission, _currentMission.MobMissions, _player.Wallet.Balance);
         _levelStarter.RestartLevel();
     }
 }

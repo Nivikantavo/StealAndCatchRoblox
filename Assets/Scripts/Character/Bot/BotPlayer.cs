@@ -66,7 +66,7 @@ public class BotPlayer : Player
     {
         List<IInteractable> interactables = _botInteractor.FindClosestInteractables(_findTargetDistance);
 
-        var canBuy = interactables.Where(x => x.Price <= Wallet.Money && x.Owner == null);
+        var canBuy = interactables.Where(x => x.Price <= Wallet.Balance && x.Owner == null);
 
         BehaviorTreeData.CurrentTarget = GetNearestExpensive(canBuy);
     }
