@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ShopItemView : MonoBehaviour, IPointerClickHandler
 {
-    public event Action<ShopItemView> ShopItemViewClick;
+    public event Action<ShopItemView> Click;
 
     [SerializeField] private Sprite _standartBackground;
     [SerializeField] private Sprite _highlightBackground;
@@ -39,7 +39,7 @@ public class ShopItemView : MonoBehaviour, IPointerClickHandler
         _priceView.Show(Price, GetNeedCurrencyView(Item.CurrencyType));
     }
 
-    public void OnPointerClick(PointerEventData eventData) => ShopItemViewClick?.Invoke(this);
+    public void OnPointerClick(PointerEventData eventData) => Click?.Invoke(this);
 
     public void Lock()
     {
@@ -64,6 +64,9 @@ public class ShopItemView : MonoBehaviour, IPointerClickHandler
         IsSelected = false;
         _selectedBaner.SetActive(false);
     }
+
+    public void Highlight() => _backgroundImage.sprite = _highlightBackground;
+    public void Unhighlight() => _backgroundImage.sprite = _standartBackground;
 
     private Sprite GetNeedCurrencyView(Currency currency)
     {

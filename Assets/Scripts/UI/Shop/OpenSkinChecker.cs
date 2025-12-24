@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class OpenSkinChecker : IShopItemVisiter
 {
-    private PersistenData _persistenData;
+    private IPersistenData _persistenData;
 
     public bool IsOpened { get; private set; }
 
-    public OpenSkinChecker(PersistenData persistenData) => _persistenData = persistenData;
+    public OpenSkinChecker(IPersistenData persistenData) => _persistenData = persistenData;
     public void Visit(ShopItem shopItem) => Visit((dynamic)shopItem);
 
     public void Visit(CharacterSkinItem characterSkin)

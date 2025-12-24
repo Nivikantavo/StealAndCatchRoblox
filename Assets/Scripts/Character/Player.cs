@@ -20,7 +20,7 @@ public abstract class Player : MonoBehaviour
     protected float AttackCooldown = 2;
     protected float AttackElapsedTime = 0;
 
-    public virtual void Initialize(House house, string name)
+    public virtual void Initialize(House house, string name, IPersistenData data = null)
     {
         _house = house;
         _interactor = GetComponent<IInteractor>();
@@ -31,8 +31,6 @@ public abstract class Player : MonoBehaviour
         _interactor.Initialize(this, _house.transform);
         _mobStealer.Initialize(_interactor);
         _fighter.Initialize(this);
-        _wallet = new InGameWallet(1000);//TODO брать из загруженной даты или конфига
-
         Stealer.MobWasTaken += OnMobTaken;
         Stealer.MobWasReleased += OnMobReleased;
         Name = name;

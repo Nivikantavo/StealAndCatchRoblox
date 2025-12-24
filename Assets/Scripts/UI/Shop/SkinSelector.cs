@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SkinSelector : IShopItemVisiter
 {
-    private PersistenData _persistenData;
-    public SkinSelector(PersistenData persistenData) => _persistenData = persistenData;
+    private IPersistenData _persistenData;
+    public SkinSelector(IPersistenData persistenData) => _persistenData = persistenData;
     public void Visit(ShopItem shopItem) => Visit((dynamic)shopItem);
     public void Visit(CharacterSkinItem characterSkin)
     {

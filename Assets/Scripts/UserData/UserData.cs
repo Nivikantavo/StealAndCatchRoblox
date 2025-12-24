@@ -7,7 +7,8 @@ public class UserData
     public string UserName;
     
     public League CurrentLeague;
-    private int _money;
+    private int _inLastGameCoins;
+    private int _coins;
     private int _diamonds;
     private CharacterSkin _currentCharacterSkin;
     private List<CharacterSkin> _openCharacterSkins;
@@ -15,7 +16,8 @@ public class UserData
     public UserData()
     {
         CurrentLeague = League.Bronze5;
-        _money = 10000;
+        _inLastGameCoins = 1000;
+        _coins = 10000;
         _diamonds = 1500;
         _currentCharacterSkin = CharacterSkin.Becon;
         _openCharacterSkins = new List<CharacterSkin>() { _currentCharacterSkin };
@@ -24,21 +26,44 @@ public class UserData
     [JsonConstructor]
     public UserData(int money, int diamonds, League league, CharacterSkin currentSkin, List<CharacterSkin> openSkins)
     {
+        _inLastGameCoins = 1000;
         CurrentLeague = league;
-        _money = money;
+        _coins = money;
         _diamonds = diamonds;
         _currentCharacterSkin = currentSkin;
         _openCharacterSkins = openSkins;
     }
 
-    public int Money
+    public int Coins
     {
-        get => _money;
+        get => _coins;
         set
         {
             if(value < 0)
                 throw new ArgumentOutOfRangeException(nameof(value));
-            _money = value;
+            _coins = value;
+        }
+    }
+
+    public int Diamonds
+    {
+        get => _diamonds;
+        set
+        {
+            if (value < 0)
+                throw new ArgumentOutOfRangeException(nameof(value));
+            _diamonds = value;
+        }
+    }
+
+    public int InLastGameCoins
+    {
+        get => _inLastGameCoins;
+        set
+        {
+            if (value < 0)
+                throw new ArgumentOutOfRangeException(nameof(value));
+            _inLastGameCoins = value;
         }
     }
 

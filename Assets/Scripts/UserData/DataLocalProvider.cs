@@ -27,6 +27,7 @@ public class DataLocalProvider : IDataProvider
             return false;
 
         _persistenData.UserData = JsonConvert.DeserializeObject<UserData>(File.ReadAllText(FullPath));
+        Debug.Log("Data loaded");
         return true;
     }
 

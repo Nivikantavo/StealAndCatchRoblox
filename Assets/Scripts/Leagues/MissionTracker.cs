@@ -12,18 +12,18 @@ public class MissionTracker : MonoBehaviour
     private UserPlayer _player;
     private PlayerHouse _playerHouse;
     private MissionTrackerPanel _missionTrackerPanel;
-    private UserData _userData;
+    private IPersistenData _userData;
     private LevelStarter _levelStarter; //TODO: убрать
 
     [Inject]
-    private void Construct(UserPlayer player, PlayerHouse playerHouse, MissionTrackerPanel missionTrackerPanel, LevelStarter levelStarter)
+    private void Construct(UserPlayer player, PlayerHouse playerHouse, MissionTrackerPanel missionTrackerPanel, LevelStarter levelStarter, IPersistenData data)
     {
         _player = player;
         _playerHouse = playerHouse;
         _missionTrackerPanel = missionTrackerPanel;
 
-        _userData = new UserData();//TODO: заправшивать данные с сервака
-        _currentMission = _config.GetMission(_userData.CurrentLeague);
+        _userData = data;//TODO: заправшивать данные с сервака
+        _currentMission = _config.GetMission(_userData.UserData.CurrentLeague);
         _missionTrackerPanel.Initialize(_currentMission.MoneyMission.MoneyValueMission, _currentMission.MobMissions);
         _missionTrackerPanel.NextLeagueTransferButtonClicked += OnNextLeagueTransferButton;
 
@@ -68,8 +68,8 @@ public class MissionTracker : MonoBehaviour
 
     private void OnNextLeagueTransferButton()
     {
-        _userData.CurrentLeague++;
-        _currentMission = _config.GetMission(_userData.CurrentLeague);
+        _userData.UserData.CurrentLeague++;
+        _currentMission = _config.GetMission(_userData.UserData.CurrentLeague);
         _missionTrackerPanel.Initialize(_currentMission.MoneyMission.MoneyValueMission, _currentMission.MobMissions, _player.Wallet.Balance);
         _levelStarter.RestartLevel();
     }

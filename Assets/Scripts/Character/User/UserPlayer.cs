@@ -9,6 +9,13 @@ public class UserPlayer : Player
     [SerializeField] private float _defaultSpeed;
     [SerializeField] private float _carringSpeed;
 
+
+    public override void Initialize(House house, string name, IPersistenData data)
+    {
+        base.Initialize(house, name, data);
+        _wallet = new InGameWallet(data);
+    }
+
     public Transform GetCameraPivot()
     {
         return _cameraPivot;

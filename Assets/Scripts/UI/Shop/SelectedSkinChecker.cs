@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class SelectedSkinChecker : IShopItemVisiter
 {
-    private PersistenData _persistenData;
+    private IPersistenData _persistenData;
 
     public bool IsSelected { get; private set; }
 
-    public SelectedSkinChecker(PersistenData persistenData) => _persistenData = persistenData;
+    public SelectedSkinChecker(IPersistenData persistenData) => _persistenData = persistenData;
     public void Visit(ShopItem shopItem) => Visit((dynamic)shopItem);
 
     public void Visit(CharacterSkinItem characterSkin)

@@ -9,10 +9,10 @@ public class PlayerHouse : House
     public event Action<BrainrotMob> MobAdded;
 
     [Inject]
-    private void Construct(UserPlayer owner)
+    private void Construct(UserPlayer owner, IPersistenData persistenData)
     {
         Owner = owner;
-        Owner.Initialize(this, string.Empty);
+        Owner.Initialize(this, string.Empty, persistenData);
         LayerNumber = 7;
         Owner.gameObject.layer = LayerNumber;
         MobCatcher.Initialize(Holders, Owner);

@@ -3,22 +3,26 @@ using System;
 public abstract class Wallet
 {
     public int Balance => _balance;
-
-    protected int _balance = 0;
+    public Currency Currency => _currency;
 
     public event Action<int> MoneyCountChanged;
 
-    public Wallet(int startingMoney)
+    protected int _balance = 0;
+    protected Currency _currency;
+    protected IPersistenData _persistenData;
+
+    public Wallet(IPersistenData persistenData, Currency currency)
     {
-        _balance = startingMoney;
-        MoneyCountChanged?.Invoke(_balance);
+        _persistenData = persistenData;
+        _currency = currency;
     }
 
     public void AddMoney(int amount)
     {
         if (amount < 0) return;
         _balance += amount;
-        MoneyCountChanged?.Invoke(_balance);
+        MoneyCountChangedCall(_balance);
+        SaveValue();
     }
 
     public bool IsEnough(int amount)
@@ -35,6 +39,15 @@ public abstract class Wallet
             throw new ArgumentOutOfRangeException(nameof(amount));
 
         _balance -= amount;
-        MoneyCountChanged?.Invoke(_balance);
+        MoneyCountChangedCall(_balance);
+        SaveValue();
     }
+
+    protected void MoneyCountChangedCall(int newValue)
+    {
+        MoneyCountChanged?.Invoke(newValue);
+    }
+
+    protected abstract void SaveValue();
+
 }

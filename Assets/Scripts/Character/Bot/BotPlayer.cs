@@ -19,9 +19,16 @@ public class BotPlayer : Player
     private BotsHouse _botsHouse => _house as BotsHouse;
     private BotCharacterController _botCharacterController;
 
-    public override void Initialize(House house, string name)
+    public override void Initialize(House house, string name, IPersistenData data = null)
     {
         base.Initialize(house, name);
+
+        if (data == null)
+        {
+            data = new PersistenData();
+        }
+        _wallet = new InGameWallet(data);
+
         _botCharacterController = GetComponent<BotCharacterController>();
         BehaviorTreeData = new BehaviorTreeData(_botsHouse, _botInteractor.InteractionRange, _botInteractor.InteractionRange, _botCharacterController);
         _botCharacterController.agent.avoidancePriority = gameObject.layer;
