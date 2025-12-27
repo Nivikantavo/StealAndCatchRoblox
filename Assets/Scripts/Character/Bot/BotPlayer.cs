@@ -26,6 +26,7 @@ public class BotPlayer : Player
         if (data == null)
         {
             data = new PersistenData();
+            data.UserData = new UserData();// TODO: убрать костыль
         }
         _wallet = new InGameWallet(data);
 

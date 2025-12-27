@@ -18,7 +18,7 @@ public class DataLocalProvider : IDataProvider
 
     public void Save()
     {
-        File.WriteAllText(FullPath, JsonConvert.SerializeObject(_persistenData.UserData, Formatting.Indented));
+        File.WriteAllText(FullPath, JsonConvert.SerializeObject(_persistenData.UserData, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore}));
     }
 
     public bool TryLoad()
@@ -27,7 +27,7 @@ public class DataLocalProvider : IDataProvider
             return false;
 
         _persistenData.UserData = JsonConvert.DeserializeObject<UserData>(File.ReadAllText(FullPath));
-        Debug.Log("Data loaded");
+
         return true;
     }
 

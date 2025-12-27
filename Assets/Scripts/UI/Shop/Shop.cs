@@ -18,6 +18,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private Image _selectedImage;
 
     [SerializeField] private ShopPanel _shopPanel;
+    [SerializeField] private SkinPlacement _skinPlacement;
 
     private IDataProvider _dataProvider;
     private ShopItemView _previewedItem;
@@ -45,7 +46,7 @@ public class Shop : MonoBehaviour
         _skinUnlocker = skinUnlocker;
 
         _shopPanel.Initialize(_contentItems.CharacterSkinItems, _openSkinChecker, _selectedSkinChecker);
-
+        _shopPanel.ItemViewClicked += OnItemViewClick;
         OnCharacterSkinsButtonClick();
     }
 
@@ -72,6 +73,8 @@ public class Shop : MonoBehaviour
     private void OnItemViewClick(ShopItemView itemView)
     {
         _previewedItem = itemView;
+        _skinPlacement.InstantiateModel(_previewedItem.Model);
+
 
         _openSkinChecker.Visit(_previewedItem.Item);
 

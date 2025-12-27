@@ -10,7 +10,6 @@ public class ShopPanel : MonoBehaviour
     public event Action<ShopItemView> ItemViewClicked;
 
     [SerializeField] private Transform _itemsContainer;
-
     private ShopItemViewFactory _shopItemViewFactory;
 
     private List<ShopItemView> _shopItems = new List<ShopItemView>();
@@ -19,7 +18,7 @@ public class ShopPanel : MonoBehaviour
     private SelectedSkinChecker _selectedSkinChecker;
 
     [Inject]
-    private void Construct(ShopItemViewFactory factory, ShopContent shopContent)
+    private void Construct(ShopItemViewFactory factory)
     {
         _shopItemViewFactory = factory;
     }

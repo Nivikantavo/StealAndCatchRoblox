@@ -18,7 +18,6 @@ public class BotsNicknameContainer
     private void LoadNicknamesFromResources(string resourcePath)
     {
         TextAsset textAsset = Resources.Load<TextAsset>(resourcePath);
-        Debug.Log($"Старт чтения никнеймов");
         if (textAsset != null)
         {
             nicknames = new List<string>();
@@ -33,7 +32,6 @@ public class BotsNicknameContainer
                 }
             }
 
-            Debug.Log($"Загружено {nicknames.Count} никнеймов");
         }
         else
         {

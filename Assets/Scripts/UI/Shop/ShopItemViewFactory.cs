@@ -13,10 +13,12 @@ public class ShopItemViewFactory : ScriptableObject
     public ShopItemView Get(ShopItem shopItem, Transform transform)
     {
         ShopItemView spawned;
-        ShopItemVisiter visiter = new ShopItemVisiter(_viewTemplate);
-        visiter.Visit(shopItem);
+        Debug.Log($"{_viewTemplate == null} - параметр фабрики null");
+        //ShopItemVisiter visiter = new ShopItemVisiter(_viewTemplate);
+        //visiter.Visit(shopItem);
 
-        spawned = Instantiate(visiter.Prefab, transform);
+        //spawned = Instantiate(visiter.Prefab, transform);
+        spawned = Instantiate(_viewTemplate, transform);
         spawned.Initialize(shopItem);
         return spawned;
     }
@@ -29,6 +31,7 @@ public class ShopItemViewFactory : ScriptableObject
         public ShopItemVisiter(ShopItemView skinView)
         {
             _characterSkinTemplate = skinView;
+            Debug.Log($"{skinView} - передали {_characterSkinTemplate} - сохранили");
         }
 
         public ShopItemView Prefab { get; private set; }
@@ -38,6 +41,7 @@ public class ShopItemViewFactory : ScriptableObject
         public void Visit(CharacterSkinItem characterSkin)
         {
             Prefab = _characterSkinTemplate;
+            Debug.Log(Prefab);
         }
         
     }

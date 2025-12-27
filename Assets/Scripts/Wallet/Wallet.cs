@@ -30,7 +30,7 @@ public abstract class Wallet
         if (amount < 0)
             throw new ArgumentOutOfRangeException(nameof(amount));
 
-        return _balance < amount;
+        return _balance >= amount;
     }
 
     public void Spend(int amount)

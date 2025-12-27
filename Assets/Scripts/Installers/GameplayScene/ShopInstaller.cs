@@ -19,8 +19,8 @@ public class ShopInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.Bind<ShopContent>().AsSingle();
-        Container.Bind<ShopItemViewFactory>().AsSingle();
+        Container.BindInstance(_shopContent).AsSingle();
+        Container.BindInstance(_shopItemViewFactory).AsSingle();
 
         BindSkinWorkers();
     }
